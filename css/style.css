@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+.fonteLogo{
+    font-family: 'Protest Riot', sans-serif;
+}
+.photo {
+    display: none; /* Começa oculta */
+}
+.navbar-collapse {
+    flex-grow: 0 !important;
+
+}
+
+#navLateral {
+    min-height: 100vh !important;
+}
+
+.efeitoHover {
+    border-radius: 10px;
+    padding: 10px !important;
+    color: rgb(255, 255, 255) !important;
+    --bs-dropdown-link-active-bg: gray;
+    transition: 0.2s ease-in-out;
+}
+
+.efeitoHover:hover {
+    color: #000000 !important;
+    padding: 10px !important;
+    border-radius: 10px;
+    background-color: #fafafa !important;
+    transition: 0.2s ease-in-out;
+}
+
+.efeitoHover:active {
+    color: #ffffff;
+}
+
+.formLogin {
+    background-color: #fafafa !important;
+    border-radius: 20px;
+
+}
+.list-style{
+    list-style: none !important;
+
+}
+.list-style a{
+    text-decoration: none;
+    color: white;
+}
+.footer{
+    border-radius: 20px 20px 0 0;
+}
