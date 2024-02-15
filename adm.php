@@ -43,8 +43,10 @@ include_once('./navAdm.php');
                     include_once('./cliente.php');
                 } else if ($page === 'filme') {
                     include_once('./filme.php');
-                } else {
-                    echo '<h1>AAAA</h1>';
+                }else if ($page === 'locado') {
+                    include_once('./locar.php');
+                }  else {
+                    echo '<h1>ERROR 404</h1>';
                 }
             } else {
                 echo '<h1>BEM VINDO AO ADM</h1>';

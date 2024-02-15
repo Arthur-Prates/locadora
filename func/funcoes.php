@@ -42,6 +42,28 @@ function listarTabelaInnerJoin($campos,$tabela1,$tabela2,$id1,$id2,$ordem,$tipoO
     $conn = null;
 }
 ;
+function listarTabelaInnerJoinTriplo($campos,$tabela1,$tabela2,$tabela3,$id1,$id2,$id3,$id4,$ordem,$tipoOrdem)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("SELECT $campos FROM $tabela1 t INNER JOIN $tabela2 y ON t.$id1 = y.$id2 INNER JOIN $tabela3 i ON t.$id3 = i.$id4 ORDER BY $ordem $tipoOrdem");
+        //        $sqlLista->bindValue(1, $campoParametro, PDO::PARAM_INT);
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        };
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        return ($e->getMessage());
+        $conn->rollback();
+    };
+    $conn = null;
+}
+;
 function VerificarUser($campos, $tabela, $email, $senha)
 {
     $conn = conectar();
@@ -190,6 +212,4 @@ function conversorDBNum($numm)
     $numero = number_format($numero, 2, '.', '');
     return $numero;
 }
-
-
 ;

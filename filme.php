@@ -29,7 +29,7 @@ if (isset($_POST['nomeFilmeCadastro']) && !empty($_POST['nomeFilmeCadastro'])) {
         <thead>
         <div class="row">
             <div class="col-6 d-flex justify-content-start mt-5">
-                <h3>Tabela Usuários</h3>
+                <h3>Tabela Filmes</h3>
             </div>
             <div class="col-6 d-flex justify-content-end mt-5">
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
