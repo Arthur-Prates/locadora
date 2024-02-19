@@ -49,7 +49,7 @@ include_once('./navAdm.php');
                     echo '<h1>ERROR 404</h1>';
                 }
             } else {
-                echo '<h1>BEM VINDO AO ADM</h1>';
+                echo '<h1 class="text-center">BEM VINDO AO ADM</h1>';
             }
             ?>
         </div>

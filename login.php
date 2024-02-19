@@ -2,6 +2,11 @@
 include_once("config/constantes.php");
 include_once("config/conexao.php");
 include_once("func/funcoes.php");
+//$options =[
+//    'cost' => 12,
+//];
+//$senha = 'senhas';
+//$senhaHash = password_hash($senha, PASSWORD_BCRYPT,$options);
 
 
 ?>
@@ -84,7 +89,12 @@ include_once("func/funcoes.php");
                     <div class="text-center">
                         <button type="button" class="btn btn-primary " onclick="fazerLogin();">Entrar</button>
                     </div>
+                    <?php
+//                    if (!empty($senhaHash)) {
+//                        echo $senhaHash;
+//                    }
 
+                    ?>
                 </form>
                 <hr>
                 <div class="text-center"><?php

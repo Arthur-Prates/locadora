@@ -1,4 +1,7 @@
-<h1 class='mt-5 mb-3'>Olá ADM</h1>
+<h1 class='mt-5 mb-3'>Olá <?php echo $_SESSION['nome']?></h1>
+<p><?php
+    echo strftime('%d de %B de %Y', strtotime('today'));
+    ?></p>
 <hr>
 
 

@@ -13,6 +13,8 @@ function fazerLogin() {
         return
     }
     if (senhaLogin === '') {
+        errorMsg.classList.remove('alert-success');
+        errorMsg.classList.add('alert-danger');
         errorMsg.style.display = 'block'
         errorMsg.innerHTML = 'o Campo da senha está vazio.'
         document.getElementById('senhaLogin').focus()
@@ -20,6 +22,8 @@ function fazerLogin() {
     } else {
         if (senhaLogin.length < 8) {
             errorMsg.style.display = 'block'
+            errorMsg.classList.remove('alert-success');
+            errorMsg.classList.add('alert-danger');
             errorMsg.innerHTML = 'A senha deve conter 8 digitos'
             return
         } else {
@@ -36,15 +40,20 @@ function fazerLogin() {
     })
         .then(response => response.json())
         .then(data => {
-            esconderProcessando();
             if (data.success) {
+                setTimeout(function () {
+                esconderProcessando();
+                    window.location.href = 'adm.php';
 
+                }, 1000);
                 errorMsg.classList.remove('alert-danger');
                 errorMsg.classList.add('alert-success');
                 errorMsg.innerHTML = data.message;
                 errorMsg.style.display = 'block';
             } else {
                 errorMsg.style.display = 'block';
+                errorMsg.classList.remove('alert-success');
+                errorMsg.classList.add('alert-danger');
                 errorMsg.innerHTML = data.message;
             }
         })

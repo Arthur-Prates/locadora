@@ -1,0 +1,9 @@
+Throwable: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '@betateste.com = 'adeirosilva@betateste.com' AND  adeirosilva@betateste.com =...' at line 1
+File: C:\xampp\htdocs\devtarde\prates\locadora\func\funcoes.php
+Lile: 77
+Throwable: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '@betateste.com = 'adeirosilva@betateste.com' AND  adeirosilva@betateste.com =...' at line 1
+File: C:\xampp\htdocs\devtarde\prates\locadora\func\funcoes.php
+Lile: 77
+Throwable: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '@betateste.com = 'adeirosilva@betateste.com' AND  adeirosilva@betateste.com =...' at line 1
+File: C:\xampp\htdocs\devtarde\prates\locadora\func\funcoes.php
+Lile: 77
