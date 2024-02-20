@@ -20,6 +20,7 @@ if ($bancodedados=='Vazio') {
         $email=$bancodedadoItem->email;
         $senha=$bancodedadoItem->senha;
     }
+    $_SESSION['idadm']=$idadm;
     $_SESSION['nome']=$nome;
     $_SESSION['email']=$email;
     $_SESSION['senha']=$senha;

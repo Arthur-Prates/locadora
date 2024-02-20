@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a  href="./login.php">
+                    <a  href="./logout.php">
                         <button class="btn btn-outline-danger " onclick="limparCookies()" >Sair</button>
                     </a>
                 </li>

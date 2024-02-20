@@ -34,22 +34,28 @@ include_once('./navAdm.php');
     <div class="col-10">
         <div class="container">
             <?php
-            if (isset($_GET['page']) && !empty($_GET['page'])) {
-                $page = $_GET['page'];
+            if (isset($_SESSION['idadm']) && !empty($_SESSION['idadm'])) {
+                if (isset($_GET['page']) && !empty($_GET['page'])) {
+                    $page = $_GET['page'];
 
-                if ($page === 'genero') {
-                    include_once('./genero.php');
-                } else if ($page === 'cliente') {
-                    include_once('./cliente.php');
-                } else if ($page === 'filme') {
-                    include_once('./filme.php');
-                }else if ($page === 'locado') {
-                    include_once('./locar.php');
-                }  else {
-                    echo '<h1>ERROR 404</h1>';
+                    if ($page === 'genero') {
+                        include_once('./genero.php');
+                    } else if ($page === 'cliente') {
+                        include_once('./cliente.php');
+                    } else if ($page === 'filme') {
+                        include_once('./filme.php');
+                    } else if ($page === 'locado') {
+                        include_once('./locar.php');
+                    } else {
+                        echo '<h1>ERROR 404</h1>';
+                    }
+                } else {
+                    echo '<h1 class="text-center">BEM VINDO AO ADM</h1>';
                 }
             } else {
-                echo '<h1 class="text-center">BEM VINDO AO ADM</h1>';
+                session_destroy();
+                header('location:index.php?error=404');
+                die();
             }
             ?>
         </div>

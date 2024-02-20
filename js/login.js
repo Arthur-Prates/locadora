@@ -40,6 +40,7 @@ function fazerLogin() {
     })
         .then(response => response.json())
         .then(data => {
+
             if (data.success) {
                 setTimeout(function () {
                 esconderProcessando();
@@ -56,6 +57,7 @@ function fazerLogin() {
                 errorMsg.classList.add('alert-danger');
                 errorMsg.innerHTML = data.message;
             }
+            esconderProcessando();
         })
         .catch(error => {
             console.error('Erro na requisição:', error);
