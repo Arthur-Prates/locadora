@@ -7,25 +7,27 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 if (!empty($_POST['email'])) {
     $email = $_POST['email'];
     $pass = $_POST['senha'];
-};
 
-$bancodedados = validarSenha('idadm,nome,email,senha', 'adm', 'email', 'senha', 'ativo', "$email", "$pass", 'A');
-if ($bancodedados=='Vazio') {
-    echo json_encode(['success' => False, 'message' => "Email ou senha incorreto"], JSON_THROW_ON_ERROR);
+    $retornoValidar = validarSenhaCriptografada('idadm,nome,email,senha', 'adm', 'email', 'senha', 'ativo', $email, $pass, 'A');
 
-} else {
-    foreach ($bancodedados as $bancodedadoItem) {
-        $idadm=$bancodedadoItem->idadm;
-        $nome=$bancodedadoItem->nome;
-        $email=$bancodedadoItem->email;
-        $senha=$bancodedadoItem->senha;
+    if ($retornoValidar) {
+        if ($retornoValidar === 'usuario') {
+            echo json_encode(['success' => false, 'message' => "Usuário Inválido"], JSON_THROW_ON_ERROR);
+        } else if ($retornoValidar === 'senha') {
+            echo json_encode(['success' => false, 'message' => "Senha Inválida"], JSON_THROW_ON_ERROR);
+
+        } else {
+            $_SESSION['idadm'] = $retornoValidar->idadm;
+            $_SESSION['nome'] = $retornoValidar->nome;
+            $_SESSION['email'] = $retornoValidar->email;
+            $_SESSION['senha'] = $retornoValidar->senha;
+            $senha = $_SESSION['senha'];
+            $nome = $_SESSION['nome'];
+            echo json_encode(['success' => true, 'message' => "Olá <b>$nome</b>, Login efetuado com sucesso! Redirecionando..."], JSON_THROW_ON_ERROR);
+        }
+    } else {
+        echo json_encode(['success' => False, 'message' => "Usuário ou senha inválidos"], JSON_THROW_ON_ERROR);
     }
-    $_SESSION['idadm']=$idadm;
-    $_SESSION['nome']=$nome;
-    $_SESSION['email']=$email;
-    $_SESSION['senha']=$senha;
-    echo json_encode(['success' => true, 'message' => "Olá <b>$nome</b>, Login efetuado com sucesso! Redirecionando..."], JSON_THROW_ON_ERROR);
 }
-
 //$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 

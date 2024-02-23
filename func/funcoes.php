@@ -64,24 +64,31 @@ function listarTabelaInnerJoinTriplo($campos, $tabela1, $tabela2, $tabela3, $id1
     $conn = null;
 }
 
-function validarSenha($campos, $tabela, $BDString1, $BDString2, $BDAtivo, $campoParametro1, $campoParametro2, $campoParametroAtivo)
+function validarSenhaCriptografada($campos, $tabela, $BDString1, $BDString2, $BDAtivo, $campoParametro1, $campoParametro2, $campoParametroAtivo)
 {
     $conn = conectar();
     try {
         $conn->beginTransaction();
-        $sqlLista = $conn->prepare("SELECT $campos FROM $tabela WHERE $BDString1 = ? AND  $BDString2 = ? AND $BDAtivo = ?");
+        $sqlLista = $conn->prepare("SELECT $campos " . "FROM $tabela WHERE " . "$BDString1 = ? " . "AND $BDAtivo = ?");
         $sqlLista->bindValue(1, $campoParametro1, PDO::PARAM_STR);
-        $sqlLista->bindValue(2, $campoParametro2, PDO::PARAM_STR);
-        $sqlLista->bindValue(3, $campoParametroAtivo, PDO::PARAM_STR);
+        $sqlLista->bindValue(2, $campoParametroAtivo, PDO::PARAM_STR);
 //                $sqlLista->bindValue(1, $campoParametro, PDO::PARAM_INT);
         $sqlLista->execute();
         $conn->commit();
         if ($sqlLista->rowCount() > 0) {
-            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+            $retornoSql = $sqlLista->fetch(PDO::FETCH_OBJ);
+            $senha_hash = $retornoSql->$BDString2;
+            if (password_verify($campoParametro2, $senha_hash)) {
+                return $retornoSql;
+            }
+            return 'senha';
+
         } else {
-            return 'Vazio';
+            return 'usuario';
         }
-    } catch (Throwable $e) {
+        return null;
+    } catch
+    (Throwable $e) {
         $error_message = 'Throwable: ' . $e->getMessage() . PHP_EOL;
         $error_message .= 'File: ' . $e->getFile() . PHP_EOL;
         $error_message .= 'Lile: ' . $e->getLine() . PHP_EOL;

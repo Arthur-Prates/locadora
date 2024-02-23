@@ -2,12 +2,11 @@
 include_once("config/constantes.php");
 include_once("config/conexao.php");
 include_once("func/funcoes.php");
-//$options =[
+//$options = [
 //    'cost' => 12,
 //];
-//$senha = 'senhas';
-//$senhaHash = password_hash($senha, PASSWORD_BCRYPT,$options);
-
+//$senha = 'amem@2timoteo.com.br';
+//$senhaHash = password_hash($senha, PASSWORD_BCRYPT, $options);
 
 ?>
 
@@ -90,9 +89,9 @@ include_once("func/funcoes.php");
                         <button type="button" class="btn btn-primary " onclick="fazerLogin();">Entrar</button>
                     </div>
                     <?php
-//                    if (!empty($senhaHash)) {
-//                        echo $senhaHash;
-//                    }
+                    //                    if (!empty($senhaHash)) {
+                    //                        echo $senhaHash;
+                    //                    }
 
                     ?>
                 </form>
@@ -102,7 +101,9 @@ include_once("func/funcoes.php");
                     echo strftime('%A, %d de %B de %Y', strtotime('today'));
                     ?></div>
             </div>
+            <?php
 
+            ?>
         </div>
 
     </div>
