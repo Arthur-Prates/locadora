@@ -11,13 +11,13 @@
 <div class="collapse bg-black w-100" id="collapseExample">
     <div class="card card-body text-white bg-black ">
 
-            <li style="list-style: none;"><a class="dropdown-item efeitoHover text-center" href="adm.php?page=locado"><b>Alugado</b></a></li>
+            <li style="list-style: none;"><a class="dropdown-item efeitoHover text-center" onclick="carregarConteudo()" href="adm.php?page=locado"><b>Alugado</b></a></li>
             <hr class='text-white'>
-            <li style="list-style: none;"><a class="dropdown-item efeitoHover text-center" href="adm.php?page=cliente"><b>Cliente</b></a></li>
+            <li style="list-style: none;"><a class="dropdown-item efeitoHover text-center" onclick="carregarConteudo()" href="adm.php?page=cliente"><b>Cliente</b></a></li>
             <hr class='text-white'>
-            <li style="list-style: none;"><a class="dropdown-item efeitoHover text-center" href="adm.php?page=genero"><b>Genero</b></a></li>
+            <li style="list-style: none;"><a class="dropdown-item efeitoHover text-center" onclick="carregarConteudo()" href="adm.php?page=genero"><b>Genero</b></a></li>
             <hr class='text-white'>
-            <li style="list-style: none;"><a class="dropdown-item efeitoHover text-center" href="adm.php?page=filme"><b>Filme</b></a></li>
+            <li style="list-style: none;"><a class="dropdown-item efeitoHover text-center" onclick="carregarConteudo()" href="adm.php?page=filme"><b>Filme</b></a></li>
 
     </div>
 </div>

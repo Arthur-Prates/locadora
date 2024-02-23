@@ -17,3 +17,10 @@ function limparCookies() {
 }
 
 
+
+function carregarConteudo(controle){
+
+    alert('Clicou');
+}
+
+

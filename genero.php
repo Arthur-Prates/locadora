@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_POST['idGenero']) && !empty($_POST['idGenero'])) {
     $iddelete = $_POST['idGenero'];
     deletecadastro('genero', "idgenero", $iddelete);

@@ -5,9 +5,9 @@
         <a class="navbar-brand" href="./adm.php"><img src="./img/icon.png" alt="" class="bg-black"
                                                       style="width: 50px; height: 50px; border-radius: 50%">
             <?php
-                if (isset($_SESSION['nomeUser']) & !empty($_SESSION['nomeUser'])) {
-                $nomeUser = $_SESSION['nomeUser'];
-                echo $nomeUser;
+                if (isset($_SESSION['nome']) & !empty($_SESSION['nome'])) {
+                $nome = $_SESSION['nome'];
+                echo $nome;
                 } ?></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

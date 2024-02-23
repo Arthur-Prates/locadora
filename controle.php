@@ -10,9 +10,17 @@ $controleGet = filter_input(INPUT_GET, 'controleGet', FILTER_SANITIZE_STRING);
 
 switch ($acao) {
     case 'listaCliente':
-        include_once ('cliente.php');
+        include_once('cliente.php');
+    case 'listaFilme':
+        include_once('filme.php');
+    case 'listaGenero':
+        include_once('genero.php');
+    case 'listaAlugado':
+        include_once('locar.php');
+    default:
+        include_once('adm.php');
 }
 switch ($controle) {
     case '':
-        include_once ('');
+        include_once('');
 }
