@@ -88,6 +88,7 @@ include_once("func/funcoes.php");
                     <div class="text-center">
                         <button type="button" class="btn btn-primary " onclick="fazerLogin();">Entrar</button>
                     </div>
+                    <div><p class="text-center mt-3">Não tem Uma Conta?<a href="register.php"> Resgistre-se</a></p></div>
                     <?php
                     //                    if (!empty($senhaHash)) {
                     //                        echo $senhaHash;
@@ -116,9 +117,9 @@ include_once("func/funcoes.php");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
+<script src="./js/login.js"></script>
 </body>
 </html>
 
-<script src="./js/login.js"></script>
 
 

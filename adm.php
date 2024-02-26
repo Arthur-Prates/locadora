@@ -32,31 +32,33 @@ include_once('./navAdm.php');
         ?>
     </div>
     <div class="col-10">
-        <div class="container">
-            <?php
-            if (isset($_SESSION['idadm']) && !empty($_SESSION['idadm'])) {
-                if (isset($_GET['page']) && !empty($_GET['page'])) {
-                    $page = $_GET['page'];
+        <div class="container" id="show">
+            <h1 class="text-center">BEM VINDO AO ADM</h1>
 
-                    if ($page === 'genero') {
-                        include_once('./genero.php');
-                    } else if ($page === 'cliente') {
-                        include_once('./cliente.php');
-                    } else if ($page === 'filme') {
-                        include_once('./filme.php');
-                    } else if ($page === 'locado') {
-                        include_once('./locar.php');
-                    } else {
-                        echo '<h1>ERROR 404</h1>';
-                    }
-                } else {
-                    echo '<h1 class="text-center">BEM VINDO AO ADM</h1>';
-                }
-            } else {
-                session_destroy();
-                header('location:index.php?error=404');
-                die();
-            }
+            <?php
+            //            if (isset($_SESSION['idadm']) && !empty($_SESSION['idadm'])) {
+            //                if (isset($_GET['page']) && !empty($_GET['page'])) {
+            //                    $page = $_GET['page'];
+            //
+            //                    if ($page === 'genero') {
+            //                        include_once('./genero.php');
+            //                    } else if ($page === 'cliente') {
+            //                        include_once('./cliente.php');
+            //                    } else if ($page === 'filme') {
+            //                        include_once('./filme.php');
+            //                    } else if ($page === 'locado') {
+            //                        include_once('./locar.php');
+            //                    } else {
+            //                        echo '<h1>ERROR 404</h1>';
+            //                    }
+            //                } else {
+            //                    echo '<h1 class="text-center">BEM VINDO AO ADM</h1>';
+            //                }
+            //            } else {
+            //                session_destroy();
+            //                header('location:index.php?error=404');
+            //                die();
+            //            }
             ?>
         </div>
 
@@ -76,6 +78,7 @@ include_once('./navAdm.php');
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
 <script src="./js/script.js"></script>
+<script src="./js/controle.js"></script>
 </body>
 
 </html>

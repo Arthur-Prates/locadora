@@ -6,7 +6,6 @@ if (isset($_POST['idCliente']) && !empty($_POST['idCliente'])) {
 }
 if (isset($_POST['idClienteUpdate']) && !empty($_POST['idClienteUpdate'])) {
     $idupdate = $_POST['idClienteUpdate'];
-    $tipoupdate = $_POST['tipoClienteUpdate'];
     $nomeupdate = $_POST['nomeClienteUpdate'];
     $nascimentoupdate = $_POST['nascimentoClienteUpdate'];
     $telefoneupdate = $_POST['telefoneClienteUpdate'];
@@ -15,7 +14,6 @@ if (isset($_POST['idClienteUpdate']) && !empty($_POST['idClienteUpdate'])) {
     $cpfupdate = $_POST['cpfClienteUpdate'];
 
 
-    alterarGlobal('cliente', 'tipoUser', "$tipoupdate", 'idcliente', $idupdate);
     alterarGlobal('cliente', 'nome', "$nomeupdate", 'idcliente', $idupdate);
     alterarGlobal('cliente', 'nascimento', "$nascimentoupdate", 'idcliente', $idupdate);
     alterarGlobal('cliente', 'telefone', "$telefoneupdate", 'idcliente', $idupdate);
@@ -24,7 +22,7 @@ if (isset($_POST['idClienteUpdate']) && !empty($_POST['idClienteUpdate'])) {
     alterarGlobal('cliente', 'cpf', "$cpfupdate", 'idcliente', $idupdate);
 }
 if (isset($_POST['nomeClienteCadastro']) && !empty($_POST['nomeClienteCadastro'])) {
-    $tipoClienteCadastro = $_POST['tipoClienteCadastro'];
+
     $nomeClienteCadastro = $_POST['nomeClienteCadastro'];
     $nascimentoClienteCadastro = $_POST['nascimentoClienteCadastro'];
     $telefoneClienteCadastro = $_POST['telefoneClienteCadastro'];
@@ -32,7 +30,7 @@ if (isset($_POST['nomeClienteCadastro']) && !empty($_POST['nomeClienteCadastro']
     $senhaClienteCadastro = $_POST['senhaClienteCadastro'];
     $cpfClienteCadastro = $_POST['cpfClienteCadastro'];
 
-    insertGlobal('cliente', 'tipoUser, nome, nascimento, telefone, email, senha, cpf', "'$tipoClienteCadastro','$nomeClienteCadastro','$nascimentoClienteCadastro','$telefoneClienteCadastro','$emailClienteCadastro','$senhaClienteCadastro','$cpfClienteCadastro'");
+    insertGlobal('cliente', 'nome, nascimento, telefone, email, senha, cpf', "$nomeClienteCadastro','$nascimentoClienteCadastro','$telefoneClienteCadastro','$emailClienteCadastro','$senhaClienteCadastro','$cpfClienteCadastro'");
 }
 ?>
 <div class="container">
@@ -66,7 +64,6 @@ if (isset($_POST['nomeClienteCadastro']) && !empty($_POST['nomeClienteCadastro']
 
         as $cliente){
         $idCliente = $cliente->idcliente;
-        $tipoCliente = $cliente->tipoUser;
         $nomeCliente = $cliente->nome;
         $nascimentoCliente = $cliente->nascimento;
         $telefoneCliente = $cliente->telefone;
@@ -108,16 +105,7 @@ if (isset($_POST['nomeClienteCadastro']) && !empty($_POST['nomeClienteCadastro']
 
                         <div class="mb-3">
                             <div class="row">
-                                <div class="col-12">
-                                    <h4 class="text-center">Tipo de Conta</h4>
-                                    <?php
-                                     if ($tipoCliente === 'adm') {
-                                         echo "<p class='text-center'>Administrador</p>";
-                                     }else {
-                                         echo "<p class='text-center'>Regular</p>";
-                                     }
-                                   ?>
-                                </div>
+
 
                                 <div class="col-6">
                                     <h4 class="text-center">Nome</h4>
@@ -171,20 +159,7 @@ if (isset($_POST['nomeClienteCadastro']) && !empty($_POST['nomeClienteCadastro']
                     <form action="#" method="post">
 
                         <div class="mb-3">
-                            <input type="text" value="<?php echo $idCliente ?>" hidden="hidden" name="idClienteUpdate">
-                            <label for="tipoClienteUpdate" class="form-label">Tipo de Conta:</label>
-                            <select class="form-select form-select-md mb-3" aria-label="Large select example"
-                                    value="<?php echo $tipoCliente ?>" name="tipoClienteUpdate" id="tipoClienteUpdate">
-                                <option <?php if ($tipoCliente === 'regular') {
-                                    echo 'selected';
-                                } ?> value="regular">Regular
-                                </option>
-                                <option <?php if ($tipoCliente === 'adm') {
-                                    echo 'selected';
-                                } ?> value="adm">Administrador
-                                </option>
 
-                            </select>
 
                             <label for="nomeClienteUpdate" class="form-label">Nome:</label>
                             <input type="text" value="<?php echo $nomeCliente ?>" name="nomeClienteUpdate"
@@ -236,13 +211,6 @@ $contarItensLista = $contarItensLista + 1;
             <div class="modal-body">
                 <form action="#" method="post">
 
-                    <label for="tipoCadastro" class="form-label">Tipo de Conta:</label>
-                    <select class="form-select form-select-md mb-3" aria-label="Large select example"
-                           name="tipoClienteCadastro" id="tipoClienteCadastro">
-                        <option selected value="regular">Regular</option>
-                        <option value="adm">Administrador
-                        </option>
-                    </select>
 
                     <div class="mb-3">
                         <label for="nomeClienteUpdate" class="form-label">Nome:</label>
