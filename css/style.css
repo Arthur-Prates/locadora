@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap');
+@media only screen and (min-width: 992px) {
+    #navLateral {
+        min-height: 100vh !important;
+    }
+}
+@media only screen and (max-width: 992px) and (min-width: 768px) {
+    #navLateral {
+        min-height: 25vh !important;
+    }
+}
+@media only screen and (max-width: 768px) {
+    #navLateral {
+        min-height: 25vh !important;
+    }
+}
 body {
     margin: 0;
     padding: 0;
@@ -7,6 +22,16 @@ body {
 }
 .fonteLogo{
     font-family: 'Protest Riot', sans-serif;
+    cursor: default;
+}
+.fonteLogo::selection{
+    background-color: #39BB2D;
+    color: black    ;
+}
+.fonteLogo font::selection{
+    background-color:black ;
+    color: white    ;
+    padding: 100px !important;
 }
 .photo {
     display: none; /* Começa oculta */
@@ -16,9 +41,7 @@ body {
 
 }
 
-#navLateral {
-    min-height: 100vh !important;
-}
+
 
 .efeitoHover {
     border-radius: 10px;

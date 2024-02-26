@@ -1,9 +1,10 @@
+
 <?php
 
 include_once("config/constantes.php");
 include_once("config/conexao.php");
 include_once("func/funcoes.php");
-    $controle = filter_input(INPUT_POST, 'controle', FILTER_SANITIZE_STRING);
+$controle = filter_input(INPUT_POST, 'controle', FILTER_SANITIZE_STRING);
 if (isset($controle) && !empty($controle)) {
     switch ($controle) {
         case 'listaCliente':
@@ -11,19 +12,19 @@ if (isset($controle) && !empty($controle)) {
             break;
         case 'listaFilme':
             include_once('filme.php');
-              break;
+            break;
         case 'listaGenero':
             include_once('genero.php');
-              break;
+            break;
         case 'listaAlugado':
             include_once('locar.php');
-              break;
+            break;
         default:
             include_once('adm.php');
-              break;
+            break;
     }
 
-}else{
+} else {
     echo '<div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">';
     echo '<h1 >Página Vazia, Retorne.</h1>';
     echo '<img src="./img/vazio.gif">';

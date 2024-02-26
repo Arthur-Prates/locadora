@@ -34,7 +34,7 @@ if (isset($_POST['nomeClienteCadastro']) && !empty($_POST['nomeClienteCadastro']
 }
 ?>
 <div class="container">
-    <table class="table mt-5">
+    <table class="table mt-5 fixed">
         <thead>
         <div class="row">
             <div class="col-6 d-flex justify-content-start mt-5">
@@ -218,7 +218,7 @@ $contarItensLista = $contarItensLista + 1;
                                class="form-control" id="nomeClienteCadastro">
                     </div>
                     <label for="nascimentoClienteCadastro" class="form-label">Data de Nascimento:</label>
-                    <input type="date"  name="nascimentoClienteCadastro"
+                    <input type="date" name="nascimentoClienteCadastro"
                            class="form-control mb-3" id="nascimentoClienteCadastro">
                     <label for="telefoneClienteCadastro" class="form-label">Telefone:</label>
                     <input type="text" maxlength="13"
@@ -228,7 +228,7 @@ $contarItensLista = $contarItensLista + 1;
                     <input type="text" maxlength="14" name="cpfClienteCadastro"
                            class="form-control mb-3 cpfClienteCadastro" id="cpfClienteCadastro cpf">
                     <label for="emailClienteCadastro" class="form-label">Email:</label>
-                    <input type="email"  name="emailClienteCadastro"
+                    <input type="email" name="emailClienteCadastro"
                            class="form-control mb-3" id="emailClienteCadastro">
                     <label for="senhaClienteCadastro" class="form-label">Senha:</label>
                     <input type="text" name="senhaClienteCadastro"

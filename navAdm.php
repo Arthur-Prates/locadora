@@ -1,5 +1,5 @@
 <h1 class="text-center text-white bg-black p-0 pt-2 m-0 fonteLogo">PAINEL DE <font
-            style="background-color:#39BB2D;color: #1A1A1A;padding: 2px">CONTROLE</font></h1>
+            style="background-color:#39BB2D;color: #1A1A1A;">CONTROLE</font></h1>
 <nav class="navbar navbar-expand-lg bg-black border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="./adm.php"><img src="./img/icon.png" alt="" class="bg-black"

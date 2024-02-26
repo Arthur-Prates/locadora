@@ -26,12 +26,12 @@ include_once('./navAdm.php');
 
 
 <div class="row d-flex">
-    <div class="col-2 bg-black text-center text-white" id='navLateral'>
+    <div class="col-0 col-lg-2 bg-black text-center text-white" id='navLateral'>
         <?php
         include_once('navlateral.php');
         ?>
     </div>
-    <div class="col-10">
+    <div class="col-12 col-md-12 col-lg-10">
         <div class="container" id="show">
             <h1 class="text-center">BEM VINDO AO ADM</h1>
 
