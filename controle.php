@@ -1,4 +1,3 @@
-
 <?php
 
 include_once("config/constantes.php");
@@ -18,6 +17,12 @@ if (isset($controle) && !empty($controle)) {
             break;
         case 'listaAlugado':
             include_once('locar.php');
+            break;
+        case 'generoAdd':
+            include_once('generoAdd.php');
+            break;
+        case 'generoAlt':
+            include_once('generoAlt.php');
             break;
         default:
             include_once('adm.php');

@@ -145,14 +145,16 @@ include_once('./navAdm.php');
                     </div>
                     <label for="nascimentoClienteCadastro" class="form-label">Data de Nascimento:</label>
                     <input type="date" name="nascimentoClienteCadastro"
-                           class="form-control mb-3" id="nascimentoClienteCadastro" placeholder="Digite a Data de Nascimento">
+                           class="form-control mb-3" id="nascimentoClienteCadastro"
+                           placeholder="Digite a Data de Nascimento">
                     <label for="telefoneClienteCadastro" class="form-label">Telefone:</label>
                     <input type="text" maxlength="13"
                            name="telefoneClienteCadastro"
                            class="form-control mb-3" id="telefoneClienteCadastro" placeholder="Digite o Telefone">
                     <label for="cpfClienteCadastro" class="form-label">CPF:</label>
                     <input type="text" maxlength="14" name="cpfClienteCadastro"
-                           class="form-control mb-3 cpfClienteCadastro" id="cpfClienteCadastro cpf" placeholder="Digite o CPF">
+                           class="form-control mb-3 cpfClienteCadastro" id="cpfClienteCadastro cpf"
+                           placeholder="Digite o CPF">
                     <label for="emailClienteCadastro" class="form-label">Email:</label>
                     <input type="email" name="emailClienteCadastro"
                            class="form-control mb-3" id="emailClienteCadastro" placeholder="Digite o Email">
@@ -189,11 +191,11 @@ include_once('./navAdm.php');
                             acima.
                         </div>
                     </div>
-
+                    <div id="bomba" name="bomba">AMEM</div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" id="btnAddGenero" class="btn btn-success" >Criar Gênero</button>
+                <button type="submit" id="btnAddGenero" class="btn btn-success">Criar Gênero</button>
             </div>
             </form>
         </div>

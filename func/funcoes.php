@@ -170,12 +170,12 @@ function deletecadastro($tabela, $donoid, $id)
 
 ;
 
-function insertGlobal($tabela, $dados, $modificar)
+function insertGlobal($tabela, $dados, $novosDados)
 {
     $conn = conectar();
     try {
         $conn->beginTransaction();
-        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES ($modificar)");
+        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES ($novosDados)");
         $sqlLista->execute();
         $conn->commit();
         if ($sqlLista->rowCount() > 0) {
