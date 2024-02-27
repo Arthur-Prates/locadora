@@ -27,7 +27,7 @@ if (isset($_POST['clienteLocarCadastro']) && !empty($_POST['clienteLocarCadastro
             </div>
             <div class="col-6 d-flex justify-content-end mt-5">
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
-                        data-bs-target="#modalcadastro">Cadastrar
+                        data-bs-target="#modalcadastroAlugar">Cadastrar
                 </button>
             </div>
         </div>
@@ -200,65 +200,6 @@ $contarItensLista = $contarItensLista + 1;
 
 
 ?>
-<!-- Modal Cadastro -->
-<div class="modal fade" id="modalcadastro" tabindex="-1"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="#" method="post">
 
-                    <div class="mb-3">
-                        <label for="clienteLocarCadastro" class="form-label">Cliente:</label>
-                        <select class="form-select form-select-md mb-3" aria-label="Large select example"
-                                name="clienteLocarCadastro" id="clienteLocarCadastro">
-                            <?php
-
-                            $cl = listarTabelaOrdenada('idcliente,nome', 'cliente', 'nome', 'ASC');
-                            foreach ($cl as $clientes) {
-                                $nomeCl = $clientes->nome;
-                                $idCl = $clientes->idcliente;
-                               ?>
-                                    <option value="<?php echo $idCl ?>"><?php echo $nomeCl ?></option>
-                                <?php
-
-                            }
-                            ?>
-
-
-                        </select>
-                        <label for="filmeLocarCadastro" class="form-label">Filme Alugado:</label>
-                        <select class="form-select form-select-md mb-3" aria-label="Large select example"
-                                name="filmeLocarCadastro" id="filmeLocarCadastro">
-                            <?php
-
-                            $film = listarTabelaOrdenada('idfilme,nomeFilme', 'filme', 'nomeFilme', 'ASC');
-                            foreach ($film as $film) {
-                                $nomeFilm = $film->nomeFilme;
-                                $idFilm = $film->idfilme;
-                                    ?>
-                                    <option value="<?php echo $idFilm ?>"><?php echo $nomeFilm ?></option>
-                                    <?php
-
-                            }
-                            ?>
-
-
-                        </select>
-                    </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary">Cadastrar Aluguel</button>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 

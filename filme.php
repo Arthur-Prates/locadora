@@ -33,7 +33,7 @@ if (isset($_POST['nomeFilmeCadastro']) && !empty($_POST['nomeFilmeCadastro'])) {
             </div>
             <div class="col-6 d-flex justify-content-end mt-5">
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
-                        data-bs-target="#modalcadastro">Cadastrar
+                        data-bs-target="#modalcadastroFilme">Cadastrar
                 </button>
             </div>
         </div>
@@ -192,60 +192,4 @@ $contarItensLista = $contarItensLista + 1;
 ?>
 </tbody>
 </table>
-</div>
-
-<!-- Modal Update -->
-<div class="modal fade" id="modalcadastro" tabindex="-1"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Filme</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="#" method="post">
-
-                    <div class="mb-3">
-                        <label for="nomeFilmeUpdate" class="form-label">Nome:</label>
-                        <input type="text" name="nomeFilmeCadastro"
-                               class="form-control" id="nomeFilmeCadastro">
-                    </div>
-                    <label for="generoFilmeCadastro" class="form-label">Gênero:</label>
-                    <select class="form-select" aria-label="Default select example" name="generoFilmeCadastro"
-                            id="generoFilmeCadastro">
-                        <?php
-
-                        $ids = listarTabelaOrdenada("*", 'genero', 'genero', 'ASC');
-                        foreach ($ids as $id) {
-
-                            $idgeneross = $id->genero;
-                            $idgeneroNumero = $id->idgenero;
-                            ?>
-                            <option value="<?php echo $idgeneroNumero ?>"><?php echo $idgeneross ?></option>
-                            <?php
-                        }
-                        ?>
-
-                    </select>
-                    <div class="mb-3">
-                        <label for="anoFilmeCadastro" class="form-label">Data de Lançamento:</label>
-                        <input type="text" minlength="4" maxlength="4"
-                               name="anoFilmeCadastro"
-                               class="form-control" id="anoFilmeCadastro">
-                    </div>
-                    <div class="mb-3">
-                        <label for="valorFilmeCadastro" class="form-label">Valor:</label>
-                        <input type="number" step="0.010" name="valorFilmeCadastro"
-                               class="form-control" id="valorFilmeCadastro">
-                    </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-success">Cadastrar Filme</button>
-            </div>
-            </form>
-        </div>
-    </div>
 </div>

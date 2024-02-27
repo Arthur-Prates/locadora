@@ -24,7 +24,7 @@ if (isset($_POST['nomeGeneroCadastro']) && !empty($_POST['nomeGeneroCadastro']))
             </div>
             <div class="col-6 d-flex justify-content-end mt-5">
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
-                        data-bs-target="#modalcadastro">Cadastrar
+                        data-bs-target="#modalcadastroGenero">Cadastrar
                 </button>
             </div>
         </div>
@@ -98,33 +98,3 @@ $contarItensLista = $contarItensLista + 1;
 </table>
 </div>
 
-<!-- Modal Update -->
-<div class="modal fade" id="modalcadastro" tabindex="-1"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Gênero</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="#" method="post">
-
-                    <div class="mb-3">
-                        <label for="nomeGeneroUpdate" class="form-label">Novo Gênero</label>
-                        <input type="text" name="nomeGeneroCadastro"
-                               class="form-control" id="nomeGeneroCadastro">
-                        <div id="emailHelp" class="form-text">Aqui você pode escrever um novo gênero de filmes
-                            acima.
-                        </div>
-                    </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-success">Criar Gênero</button>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>

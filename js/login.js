@@ -1,4 +1,7 @@
+if(document.getElementById('emailLogin')){
 document.getElementById('emailLogin').focus()
+
+}
 
 function fazerLogin() {
 
