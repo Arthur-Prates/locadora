@@ -9,7 +9,7 @@ if (isset($Dados) && !empty($Dados)) {
     $retornoInsert = insertGlobal('genero', 'genero', "$genero");
 
     if ($retornoInsert > 0) {
-        echo json_encode(['success' => true, 'message' => "Gênero $genero cadastrado com sucesso"], JSON_THROW_ON_ERROR);
+        echo json_encode(['success' => true, 'message' => "Gênero <b>$genero</b> cadastrado com sucesso"], JSON_THROW_ON_ERROR);
     } else {
         echo json_encode(['success' => false, 'message' => "Gênero Não cadastrado! Error Bd"], JSON_THROW_ON_ERROR);
     }

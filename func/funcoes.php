@@ -62,9 +62,7 @@ function listarTabelaInnerJoinTriplo($campos, $tabela1, $tabela2, $tabela3, $id1
         $conn->rollback();
     }
     $conn = null;
-}
-
-function validarSenhaCriptografada($campos, $tabela, $BDString1, $BDString2, $BDAtivo, $campoParametro1, $campoParametro2, $campoParametroAtivo)
+}function validarSenhaCriptografada($campos, $tabela, $BDString1, $BDString2, $BDAtivo, $campoParametro1, $campoParametro2, $campoParametroAtivo)
 {
     $conn = conectar();
     try {
@@ -175,7 +173,7 @@ function insertGlobal($tabela, $dados, $novosDados)
     $conn = conectar();
     try {
         $conn->beginTransaction();
-        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES ($novosDados)");
+        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES ('$novosDados')");
         $sqlLista->execute();
         $conn->commit();
         if ($sqlLista->rowCount() > 0) {

@@ -1,16 +1,18 @@
+const generoModalInstacia = new bootstrap.Modal(document.getElementById('modalcadastroGenero'))
 const modalGenero = document.getElementById('modalcadastroGenero');
 const formGenero = document.getElementById('frmAddGenero')
 const idGenero = document.getElementById('nomeGeneroCadastro')
 const botaoGenero = document.getElementById('btnAddGenero')
-const bomba = document.getElementById('bomba')
+const AlertaCadastro = document.getElementById('AlertaCadastro')
 
-idGenero.value = 'PICANHA'
+
 modalGenero.addEventListener('shown.bs.modal', () => {
     idGenero.focus();
     const submitHandler = function (event) {
-        mostrarProcessando()
         event.preventDefault();
-        // botaoGenero.disabled = true;
+         botaoGenero.disabled = true;
+         generoModalInstacia.hide();
+        mostrarProcessando()
         const form = event.target;
         const formData = new FormData(form);
 
@@ -22,11 +24,17 @@ modalGenero.addEventListener('shown.bs.modal', () => {
         })
             .then(response => response.json())
             .then(data => {
-             console.log(data)
+          
                 if (data.success) {
-                   bomba.innerHTML= data.message;
+                    AlertaCadastro.classList.remove('alert-danger');
+                    AlertaCadastro.classList.add('alert-success');
+                    AlertaCadastro.style.display = 'block';
+                   AlertaCadastro.innerHTML= data.message;
                 } else {
-                    bomba.innerHTML= data.message;
+                    AlertaCadastro.classList.remove('alert-success');
+                    AlertaCadastro.classList.add('alert-danger');
+                    AlertaCadastro.style.display = 'block';
+                    AlertaCadastro.innerHTML= data.message;
                 }
             })
             .catch(error => {

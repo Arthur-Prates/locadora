@@ -191,7 +191,10 @@ include_once('./navAdm.php');
                             acima.
                         </div>
                     </div>
-                    <div id="bomba" name="bomba">AMEM</div>
+                    <div class="alert alert-danger alert-dismissible fade show " role="alert" id="AlertaCadastro" name="AlertaCadastro" style="display:none">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
