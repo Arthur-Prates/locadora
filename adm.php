@@ -15,7 +15,6 @@ include_once("func/funcoes.php");
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
-
 </head>
 
 <body>
@@ -31,6 +30,7 @@ include_once('./navbar/navAdm.php');
         ?>
     </div>
     <div class="col-12 col-md-12 col-lg-10">
+
         <div class="container" id="show">
             <h1 class="text-center">BEM VINDO AO ADM</h1>
 
@@ -207,6 +207,35 @@ include_once('./navbar/navAdm.php');
         </div>
     </div>
 </div>
+<!-- Modal Cadastro Genero -->
+<div class="modal fade" id="modalEditGenero" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Gênero</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" method="post" name="frmEditGenero" id="frmEditGenero">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <input type="text" id="idGeneroEdit" hidden="hidden">
+                        <label for="nomeGeneroEdit" class="form-label">Novo Gênero</label>
+                        <input type="text" name="nomeGeneroEdit"
+                               class="form-control" id="nomeGeneroEdit" placeholder="Digite o novo Genero">
+                        <div id="GeneroHelp" class="form-text">Aqui você pode editar um gênero de filmes
+                            acima.
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" id="btnEditGenero" class="btn btn-success">Salvar Alteração</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- Modal Cadastro Filme -->
 <div class="modal fade" id="modalcadastroFilme" tabindex="-1"
@@ -279,6 +308,10 @@ include_once('./navbar/navAdm.php');
 <script src="./js/script.js"></script>
 <script src="./js/alterDB.js"></script>
 <script src="./js/controle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
+<script>
+
+</script>
 </body>
 
 </html>

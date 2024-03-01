@@ -22,7 +22,7 @@ if (!empty($controle) && isset($controle)) {
             include_once('genero/generoAdd.php');
             break;
         case 'generoAlt':
-            include_once('genero/generoAlt.php');
+            include_once('genero/generoEdit.php');
             break;
         default:
             include_once('adm.php');

@@ -7,7 +7,7 @@
             </div>
             <div class="col-6 d-flex justify-content-end mt-5">
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
-                        data-bs-target="#modalcadastroGenero">Cadastrar
+                      onclick="abrirModalJs('modalcadastroGenero')">Cadastrar
                 </button>
             </div>
         </div>
@@ -33,9 +33,7 @@
                 <td>
                     <form action="#" method="post">
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#modalupdate<?php echo $contarItensLista ?>">Alterar
-                            </button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="abrirModalEdicao('<?php echo $nomeGenero?>',<?php echo $idGenero?>)">Alterar</button>
                             <input type="text" value="<?php echo $idGenero ?>" hidden="hidden" name="idGenero">
                             <button type="submit" class="btn btn-danger">Deletar</button>
                     </form>
@@ -82,4 +80,3 @@
         </tbody>
     </table>
 </div>
-
