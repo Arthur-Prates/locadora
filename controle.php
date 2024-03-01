@@ -4,25 +4,25 @@ include_once("config/constantes.php");
 include_once("config/conexao.php");
 include_once("func/funcoes.php");
 $controle = filter_input(INPUT_POST, 'controle', FILTER_SANITIZE_STRING);
-if (isset($controle) && !empty($controle)) {
+if (!empty($controle) && isset($controle)) {
     switch ($controle) {
         case 'listaCliente':
-            include_once('cliente.php');
+            include_once('cliente/cliente.php');
             break;
         case 'listaFilme':
-            include_once('filme.php');
+            include_once('filme/filme.php');
             break;
         case 'listaGenero':
-            include_once('genero.php');
+            include_once('genero/genero.php');
             break;
         case 'listaAlugado':
-            include_once('locar.php');
+            include_once('alugado/locar.php');
             break;
         case 'generoAdd':
-            include_once('generoAdd.php');
+            include_once('genero/generoAdd.php');
             break;
         case 'generoAlt':
-            include_once('generoAlt.php');
+            include_once('genero/generoAlt.php');
             break;
         default:
             include_once('adm.php');
@@ -32,7 +32,7 @@ if (isset($controle) && !empty($controle)) {
 } else {
     echo '<div style="display: flex;justify-content: center;align-items: center; min-height: 95vh !important;">';
     echo '<h1 >Página Vazia, Retorne.</h1>';
-    echo '<img src="./img/vazio.gif">';
+    echo '<img src="./img/vazio.gif" alt="ERROR 404">';
     echo '</div>';
 }
 

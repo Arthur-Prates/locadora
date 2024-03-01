@@ -33,9 +33,7 @@ body {
     color: white    ;
     padding: 100px !important;
 }
-.photo {
-    display: none; /* Começa oculta */
-}
+
 .navbar-collapse {
     flex-grow: 0 !important;
 

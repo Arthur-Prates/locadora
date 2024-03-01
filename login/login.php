@@ -1,7 +1,7 @@
 <?php
-include_once("config/constantes.php");
-include_once("config/conexao.php");
-include_once("func/funcoes.php");
+include_once("../config/constantes.php");
+include_once("../config/conexao.php");
+include_once("../func/funcoes.php");
 //$options = [
 //    'cost' => 12,
 //];
@@ -16,16 +16,15 @@ include_once("func/funcoes.php");
     <meta charset="utf-8">
     <title>Manda Series | Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
     <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css"
-          &gt;>
+          href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
     <style>
         .bgLogin {
-            background: url("./img/wall.jpg");
+            background: url("../img/wall.jpg");
             background-size: cover;
             backdrop-filter: saturate(100%);
             min-height: 100vh;
@@ -35,7 +34,7 @@ include_once("func/funcoes.php");
 <body class="bgLogin">
 <nav class="navbar navbar-expand-lg bg-black border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand fonteLogo" href="./index.php">Manda <font
+        <a class="navbar-brand fonteLogo" href="../index.php">Manda <font
                     style="background-color:#39BB2D;color: #1A1A1A;padding: 2px">Series</font></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,12 +43,13 @@ include_once("func/funcoes.php");
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+                    <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="./login.php"><span class='mdi mdi-login'></span>
+                    <a class="nav-link" aria-current="page" href="login.php"><span class='mdi mdi-login'></span>
                         Entrar</a>
                 </li>
+
             </ul>
             <form class="d-flex" role="search">
                 <input class="form-control me-2 bg-black" type="search" placeholder="Procurar" aria-label="Search">
@@ -117,7 +117,7 @@ include_once("func/funcoes.php");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
-<script src="./js/login.js"></script>
+<script src="../js/login.js"></script>
 </body>
 </html>
 

@@ -14,21 +14,20 @@ include_once("func/funcoes.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css"
-          &gt;>
+          href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
 
 </head>
 
 <body>
 <?php
-include_once('./navAdm.php');
+include_once('./navbar/navAdm.php');
 ?>
 
 
 <div class="row d-flex">
     <div class="col-0 col-lg-2 bg-black text-center text-white" id='navLateral'>
         <?php
-        include_once('navlateral.php');
+        include_once('./navbar/navlateral.php');
         ?>
     </div>
     <div class="col-12 col-md-12 col-lg-10">
@@ -73,8 +72,8 @@ include_once('./navAdm.php');
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form action="#" method="post">
+            <form action="#" method="post">
+                <div class="modal-body">
 
                     <div class="mb-3">
                         <label for="clienteLocarCadastro" class="form-label">Cliente:</label>
@@ -100,8 +99,8 @@ include_once('./navAdm.php');
                                 name="filmeLocarCadastro" id="filmeLocarCadastro">
                             <?php
 
-                            $film = listarTabelaOrdenada('idfilme,nomeFilme', 'filme', 'nomeFilme', 'ASC');
-                            foreach ($film as $film) {
+                            $films = listarTabelaOrdenada('idfilme,nomeFilme', 'filme', 'nomeFilme', 'ASC');
+                            foreach ($films as $film) {
                                 $nomeFilm = $film->nomeFilme;
                                 $idFilm = $film->idfilme;
                                 ?>
@@ -115,11 +114,11 @@ include_once('./navAdm.php');
                         </select>
                     </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary">Cadastrar Aluguel</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Cadastrar Aluguel</button>
+                </div>
             </form>
         </div>
     </div>
@@ -134,12 +133,12 @@ include_once('./navAdm.php');
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Usuário</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form action="#" method="post">
+            <form action="#" method="post">
+                <div class="modal-body">
 
 
                     <div class="mb-3">
-                        <label for="nomeClienteUpdate" class="form-label">Nome:</label>
+                        <label for="nomeClienteCadastro" class="form-label">Nome:</label>
                         <input type="text" name="nomeClienteCadastro"
                                class="form-control" id="nomeClienteCadastro" placeholder="Digite o Nome do Cliente">
                     </div>
@@ -152,8 +151,11 @@ include_once('./navAdm.php');
                            name="telefoneClienteCadastro"
                            class="form-control mb-3" id="telefoneClienteCadastro" placeholder="Digite o Telefone">
                     <label for="cpfClienteCadastro" class="form-label">CPF:</label>
-                    <input type="text" maxlength="14" name="cpfClienteCadastro"
-                           class="form-control mb-3 cpfClienteCadastro" id="cpfClienteCadastro cpf"
+
+                    <input type="text" maxlength="14"
+                           name="cpfClienteCadastro"
+                           class="form-control mb-3 cpfClienteCadastro"
+                           id="cpfClienteCadastro"
                            placeholder="Digite o CPF">
                     <label for="emailClienteCadastro" class="form-label">Email:</label>
                     <input type="email" name="emailClienteCadastro"
@@ -161,11 +163,11 @@ include_once('./navAdm.php');
                     <label for="senhaClienteCadastro" class="form-label">Senha:</label>
                     <input type="text" name="senhaClienteCadastro"
                            class="form-control mb-3" id="senhaClienteCadastro" placeholder="Digite uma Senha">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-success">Criar Usuário</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-success">Criar Usuário</button>
+                </div>
             </form>
         </div>
     </div>
@@ -180,8 +182,8 @@ include_once('./navAdm.php');
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Gênero</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form action="#" method="post" name="frmAddGenero" id="frmAddGenero">
+            <form action="#" method="post" name="frmAddGenero" id="frmAddGenero">
+                <div class="modal-body">
 
                     <div class="mb-3">
                         <label for="nomeGeneroCadastro" class="form-label">Novo Gênero</label>
@@ -191,15 +193,16 @@ include_once('./navAdm.php');
                             acima.
                         </div>
                     </div>
-                    <div class="alert alert-danger alert-dismissible fade show " role="alert" id="AlertaCadastro" name="AlertaCadastro" style="display:none">
+                    <div class="alert alert-danger alert-dismissible fade show " role="alert" id="AlertaCadastro"
+                         style="display:none">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" id="btnAddGenero" class="btn btn-success">Criar Gênero</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" id="btnAddGenero" class="btn btn-success">Criar Gênero</button>
+                </div>
             </form>
         </div>
     </div>
@@ -214,8 +217,8 @@ include_once('./navAdm.php');
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Filme</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form action="#" method="post">
+            <form action="#" method="post">
+                <div class="modal-body">
 
                     <div class="mb-3">
                         <label for="nomeFilmeCadastro" class="form-label">Nome:</label>
@@ -251,11 +254,11 @@ include_once('./navAdm.php');
                                class="form-control" id="valorFilmeCadastro" placeholder="Digite o Valor">
                     </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-success">Cadastrar Filme</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-success">Cadastrar Filme</button>
+                </div>
             </form>
         </div>
     </div>

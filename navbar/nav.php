@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-black border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand fonteLogo" href="./index.php">Manda <font
+        <a class="navbar-brand fonteLogo" href="../index.php">Manda <font
                     style="background-color:#39BB2D;color: #1A1A1A;padding: 2px">Series</font></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,18 +9,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+                    <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link " role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false" href="./index.php"><span class="mdi mdi-account"></span> Conta</a>
+                       aria-expanded="false" href="../index.php"><span class="mdi mdi-account"></span> Conta</a>
                     <ul class="dropdown-menu bg-black">
                         <li><a class="dropdown-item bg-black" href="#" ">Configurações</a></li>
 
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item bg-black" href="./login.php" ">Sair</a></li>
+                        <li><a class="dropdown-item bg-black" href="./login/login.php" ">Sair</a></li>
                     </ul>
                 </li>
 
@@ -48,10 +48,10 @@
                             ?>
 
                             <li><a class="dropdown-item bg-black"
-                                   href="index.php?page=<?php echo $generossNome ?>"><?php echo $generossNome ?></a>
+                                   href="../index.php?page=<?php echo $generossNome ?>"><?php echo ucfirst(strtolower($generossNome)) ?></a>
                             </li>
                             <?php
-                            $barrinha = $barrinha + 1;
+                            ++$barrinha;
                         }
                         ?>
                     </ul>

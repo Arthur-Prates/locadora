@@ -47,7 +47,7 @@ function fazerLogin() {
             if (data.success) {
                 setTimeout(function () {
                 esconderProcessando();
-                    window.location.href = 'adm.php';
+                    window.location.href = '../adm.php';
 
                 }, 1000);
                 errorMsg.classList.remove('alert-danger');
@@ -75,7 +75,7 @@ function mostrarProcessando() {
     divProcessando.style.top = '44%';
     divProcessando.style.left = '50%';
     divProcessando.style.transform = 'translate(-50%, -50%)';
-    divProcessando.innerHTML = '<img src="./img/spinnerLoop.gif"  width="70px" alt="Processando..." title="Processando..." >';
+    divProcessando.innerHTML = '<img src="../img/spinnerLoop.gif"  width="70px" alt="Processando..." title="Processando..." >';
     document.body.appendChild(divProcessando);
 }
 
