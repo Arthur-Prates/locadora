@@ -62,7 +62,9 @@ function listarTabelaInnerJoinTriplo($campos, $tabela1, $tabela2, $tabela3, $id1
         $conn->rollback();
     }
     $conn = null;
-}function validarSenhaCriptografada($campos, $tabela, $BDString1, $BDString2, $BDAtivo, $campoParametro1, $campoParametro2, $campoParametroAtivo)
+}
+
+function validarSenhaCriptografada($campos, $tabela, $BDString1, $BDString2, $BDAtivo, $campoParametro1, $campoParametro2, $campoParametroAtivo)
 {
     $conn = conectar();
     try {
@@ -121,12 +123,12 @@ function listarTabelaOrdenada($campos, $tabela, $campoOrdem, $ASCouDESC)
 }
 
 
-function alterarGlobal($tabela, $tipo, $valor, $identificar, $id)
+function alterarGlobal($tabela, $campo, $valor, $identificar, $id)
 {
     $conn = conectar();
     try {
         $conn->beginTransaction();
-        $sqlLista = $conn->prepare("UPDATE $tabela SET $tipo = '$valor' WHERE  $identificar = $id ;");
+        $sqlLista = $conn->prepare("UPDATE $tabela SET $campo = '$valor' WHERE  $identificar = $id ;");
         //        $sqlLista->bindValue(1, $campoParametro, PDO::PARAM_INT);
         $sqlLista->execute();
         $conn->commit();
@@ -225,3 +227,14 @@ function conversorDBNumPonto($numm)
     return $numero;
 }
 
+function ucfirst_tr($str)
+{
+    $trMap = ['Á' => 'á', 'É' => 'é', 'Í' => 'í', 'Ó' => 'ó', 'Ú' => 'ú', 'Ã' => 'ã', 'Õ' => 'õ', 'Â' => 'â', 'Ê' => 'ê', 'Î' => 'î', 'Ô' => 'ô', 'Û' => 'û', 'À' => 'à', 'È' => 'è', 'Ì' => 'ì', 'Ò' => 'ò', 'Ù' => 'ù'];
+    $str = mb_strtolower(strtr($str, $trMap));
+    $first = mb_substr($str, 0, 1);
+    $first = strtr($first, array_flip($trMap));
+    $first = mb_strtoupper($first);
+    return $first . mb_substr($str, 1);
+}
+
+?>

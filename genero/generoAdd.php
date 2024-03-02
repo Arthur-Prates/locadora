@@ -8,6 +8,7 @@ if (isset($Dados) && !empty($Dados)) {
     $genero = isset($Dados['nomeGeneroCadastro']) ? addslashes(mb_strtoupper($Dados['nomeGeneroCadastro'], 'UTF-8')) : '';
     $retornoInsert = insertGlobal('genero', 'genero', $genero);
 
+
     if ($retornoInsert > 0) {
         try {
             echo json_encode(['success' => true, 'message' => "Gênero <b>$genero</b> cadastrado com sucesso"], JSON_THROW_ON_ERROR);

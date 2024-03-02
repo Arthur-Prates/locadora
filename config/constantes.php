@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('America/Sao_Paulo');
-setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'portuguese');
 session_start();
 define('URLBASEPATH', __DIR__ . '/../');
 define('BASEPATH', __DIR__ . DIRECTORY_SEPARATOR);

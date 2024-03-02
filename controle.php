@@ -6,6 +6,9 @@ include_once("func/funcoes.php");
 $controle = filter_input(INPUT_POST, 'controle', FILTER_SANITIZE_STRING);
 if (!empty($controle) && isset($controle)) {
     switch ($controle) {
+        case 'listaAlugado':
+            include_once('alugado/locar.php');
+            break;
         case 'listaCliente':
             include_once('cliente/cliente.php');
             break;
@@ -15,17 +18,14 @@ if (!empty($controle) && isset($controle)) {
         case 'listaGenero':
             include_once('genero/genero.php');
             break;
-        case 'listaAlugado':
-            include_once('alugado/locar.php');
-            break;
         case 'generoAdd':
             include_once('genero/generoAdd.php');
             break;
-        case 'generoAlt':
+        case 'generoEdit':
             include_once('genero/generoEdit.php');
             break;
-        default:
-            include_once('adm.php');
+        case 'generoDelete':
+            include_once('genero/generoDelete.php');
             break;
     }
 

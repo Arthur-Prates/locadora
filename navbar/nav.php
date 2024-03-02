@@ -31,10 +31,12 @@
                     </a>
                     <ul class="dropdown-menu bg-black">
                         <?php
-                        $generosFilme = listarTabela('*', 'genero');
+                        $generosFilme = listarTabela('genero', 'genero');
                             $barrinha = 0;
                         foreach ($generosFilme as $genero) {
                             $generossNome = $genero->genero;
+                            $generossNome = ucfirst_tr($generossNome);
+
                             ?>
                             <?php
                             if ($barrinha !== 0) {
@@ -48,7 +50,7 @@
                             ?>
 
                             <li><a class="dropdown-item bg-black"
-                                   href="../index.php?page=<?php echo $generossNome ?>"><?php echo ucfirst(strtolower($generossNome)) ?></a>
+                                   href="../index.php?page=<?php echo $generossNome ?>"><?php echo $generossNome ?></a>
                             </li>
                             <?php
                             ++$barrinha;

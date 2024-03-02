@@ -20,7 +20,7 @@ function addcomSucesso() {
     }).then((result) => {
         /* Read more about handling dismissals below */
         if (result.dismiss === Swal.DismissReason.timer) {
-            console.log("I was closed by the timer");
+            console.log("fechando..");
         }
     });
 }
@@ -47,76 +47,19 @@ function addErro() {
     }).then((result) => {
         /* Read more about handling dismissals below */
         if (result.dismiss === Swal.DismissReason.timer) {
-            console.log("I was closed by the timer");
+            console.log("fechando..");
         }
     });
 }
 
 
 const modalGenero = document.getElementById('modalcadastroGenero');
-const formGenero = document.getElementById('frmAddGenero')
+
 const idGenero = document.getElementById('nomeGeneroCadastro')
 const botaoGenero = document.getElementById('btnAddGenero')
 const AlertaCadastro = document.getElementById('AlertaCadastro')
-
-
 modalGenero.addEventListener('shown.bs.modal', () => {
-    idGenero.focus();
-    const submitHandler = function (event) {
-        event.preventDefault();
-        botaoGenero.disabled = true;
-        generoModalInstacia.hide();
-        mostrarProcessando()
-        const form = event.target;
-        const formData = new FormData(form);
 
-        formData.append('controle', 'generoAdd')
-
-        fetch('controle.php', {
-            method: 'POST', body: formData,
-        })
-            .then(response => response.json())
-            .then(data => {
-
-                if (data.success) {
-                    addcomSucesso();
-                    AlertaCadastro.classList.remove('alert-danger');
-                    AlertaCadastro.classList.add('alert-success');
-                    AlertaCadastro.style.display = 'block';
-                    AlertaCadastro.innerHTML = data.message;
-                    setTimeout(function () {
-                        esconderProcessando();
-                        window.location.reload(true);
-                    }, 3000);
-                } else {
-                    addErro()
-                    AlertaCadastro.classList.remove('alert-success');
-                    AlertaCadastro.classList.add('alert-danger');
-                    AlertaCadastro.style.display = 'block';
-                    AlertaCadastro.innerHTML = data.message;
-                    setTimeout(function () {
-                        esconderProcessando();
-                        window.location.reload(true);
-                    }, 3000);
-                }
-            })
-            .catch(error => {
-                addErro()
-                setTimeout(function () {
-                    esconderProcessando();
-                    window.location.reload(true);
-                }, 3000);
-                console.error('Erro na requisição:', error);
-            });
-
-
-    }
-    formGenero.addEventListener('submit', submitHandler);
-})
-
-modalGenero.addEventListener('hidden.bs.modal', () => {
-    botaoGenero.disabled = false;
-    esconderProcessando()
 })
 
 
@@ -127,17 +70,87 @@ function abrirModalEdicao(genero, idgenero) {
     }
     inGeneroEdit.value = genero
     document.getElementById('idGeneroEdit').value = idgenero
-    abrirModalJs('modalEditGenero')
+    // abrirModalJs('modalEditGenero', 'A')
 }
 
 
-function abrirModalJs(nomeModal, abrirModal = 'A') {
-    const ModalInstacia = new bootstrap.Modal(document.getElementById(nomeModal))
-    if (abrirModal == 'A') {
+function abrirModalJs(id, inID, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, formulario) {
+    const formDados = document.getElementById(`${formulario}`)
+    const inputFocar = document.getElementById(`${inFocus}`);
+    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    if (abrirModal === 'A') {
         ModalInstacia.show();
+        inputFocar.focus();
+
+        if (inID !== false) {
+            const inputid = document.getElementById(`${inID}`);
+            inputid.value = id;
+
+        }
+
+        const submitHandler = function (event) {
+            event.preventDefault();
+
+            botao.disabled = true;
+
+            mostrarProcessando()
+            const form = event.target;
+            const formData = new FormData(form);
+            if (inID !== false) {
+                formData.append('id', `${id}`)
+            }
+            formData.append('controle', `${addEditDel}`)
+
+            fetch('controle.php', {
+                method: 'POST', body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+
+                    if (data.success) {
+                        addcomSucesso();
+                        // AlertaCadastro.classList.remove('alert-danger');
+                        // AlertaCadastro.classList.add('alert-success');
+                        // AlertaCadastro.style.display = 'block';
+                        // AlertaCadastro.innerHTML = data.message;
+                        setTimeout(function () {
+                            esconderProcessando();
+                            window.location.reload(true);
+                        }, 3000);
+                    } else {
+                        addErro()
+                        console.log(data)
+                        console.log(data.message)
+                        // AlertaCadastro.classList.remove('alert-success');
+                        // AlertaCadastro.classList.add('alert-danger');
+                        // AlertaCadastro.style.display = 'block';
+                        // AlertaCadastro.innerHTML = data.message;
+                        setTimeout(function () {
+                            esconderProcessando();
+                            window.location.reload(true);
+                        }, 3000);
+                    }
+                })
+                .catch(error => {
+
+                    addErro()
+                    setTimeout(function () {
+                        esconderProcessando();
+                        window.location.reload(true);
+                    }, 3000);
+                    console.error('Erro na requisição:', error);
+                });
+
+
+        }
+        formDados.addEventListener('submit', submitHandler);
+
+
     } else {
+        alert('nem abre')
         ModalInstacia.hide();
     }
+    ;
 }
 
 function mostrarProcessando() {

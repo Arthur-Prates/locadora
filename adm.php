@@ -21,7 +21,9 @@ include_once("func/funcoes.php");
 <?php
 include_once('./navbar/navAdm.php');
 ?>
-
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDeleteGenero">
+    Launch demo modal
+</button>
 
 <div class="row d-flex">
     <div class="col-0 col-lg-2 bg-black text-center text-white" id='navLateral'>
@@ -34,151 +36,16 @@ include_once('./navbar/navAdm.php');
         <div class="container" id="show">
             <h1 class="text-center">BEM VINDO AO ADM</h1>
 
-            <?php
-            //            if (isset($_SESSION['idadm']) && !empty($_SESSION['idadm'])) {
-            //                if (isset($_GET['page']) && !empty($_GET['page'])) {
-            //                    $page = $_GET['page'];
-            //
-            //                    if ($page === 'genero') {
-            //                        include_once('./genero.php');
-            //                    } else if ($page === 'cliente') {
-            //                        include_once('./cliente.php');
-            //                    } else if ($page === 'filme') {
-            //                        include_once('./filme.php');
-            //                    } else if ($page === 'locado') {
-            //                        include_once('./locar.php');
-            //                    } else {
-            //                        echo '<h1>ERROR 404</h1>';
-            //                    }
-            //                } else {
-            //                    echo '<h1 class="text-center">BEM VINDO AO ADM</h1>';
-            //                }
-            //            } else {
-            //                session_destroy();
-            //                header('location:index.php?error=404');
-            //                die();
-            //            }
-            ?>
         </div>
 
     </div>
 </div>
-<!-- Modal Cadastro Aluguel -->
-<div class="modal fade" id="modalcadastroAlugar" tabindex="-1"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="#" method="post">
-                <div class="modal-body">
-
-                    <div class="mb-3">
-                        <label for="clienteLocarCadastro" class="form-label">Cliente:</label>
-                        <select class="form-select form-select-md mb-3" aria-label="Large select example"
-                                name="clienteLocarCadastro" id="clienteLocarCadastro">
-                            <?php
-
-                            $cl = listarTabelaOrdenada('idcliente,nome', 'cliente', 'nome', 'ASC');
-                            foreach ($cl as $clientes) {
-                                $nomeCl = $clientes->nome;
-                                $idCl = $clientes->idcliente;
-                                ?>
-                                <option value="<?php echo $idCl ?>"><?php echo $nomeCl ?></option>
-                                <?php
-
-                            }
-                            ?>
-
-
-                        </select>
-                        <label for="filmeLocarCadastro" class="form-label">Filme Alugado:</label>
-                        <select class="form-select form-select-md mb-3" aria-label="Large select example"
-                                name="filmeLocarCadastro" id="filmeLocarCadastro">
-                            <?php
-
-                            $films = listarTabelaOrdenada('idfilme,nomeFilme', 'filme', 'nomeFilme', 'ASC');
-                            foreach ($films as $film) {
-                                $nomeFilm = $film->nomeFilme;
-                                $idFilm = $film->idfilme;
-                                ?>
-                                <option value="<?php echo $idFilm ?>"><?php echo $nomeFilm ?></option>
-                                <?php
-
-                            }
-                            ?>
-
-
-                        </select>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-primary">Cadastrar Aluguel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Cadastro Cliente -->
-<div class="modal fade" id="modalcadastroCliente" tabindex="-1"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Usuário</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="#" method="post">
-                <div class="modal-body">
-
-
-                    <div class="mb-3">
-                        <label for="nomeClienteCadastro" class="form-label">Nome:</label>
-                        <input type="text" name="nomeClienteCadastro"
-                               class="form-control" id="nomeClienteCadastro" placeholder="Digite o Nome do Cliente">
-                    </div>
-                    <label for="nascimentoClienteCadastro" class="form-label">Data de Nascimento:</label>
-                    <input type="date" name="nascimentoClienteCadastro"
-                           class="form-control mb-3" id="nascimentoClienteCadastro"
-                           placeholder="Digite a Data de Nascimento">
-                    <label for="telefoneClienteCadastro" class="form-label">Telefone:</label>
-                    <input type="text" maxlength="13"
-                           name="telefoneClienteCadastro"
-                           class="form-control mb-3" id="telefoneClienteCadastro" placeholder="Digite o Telefone">
-                    <label for="cpfClienteCadastro" class="form-label">CPF:</label>
-
-                    <input type="text" maxlength="14"
-                           name="cpfClienteCadastro"
-                           class="form-control mb-3 cpfClienteCadastro"
-                           id="cpfClienteCadastro"
-                           placeholder="Digite o CPF">
-                    <label for="emailClienteCadastro" class="form-label">Email:</label>
-                    <input type="email" name="emailClienteCadastro"
-                           class="form-control mb-3" id="emailClienteCadastro" placeholder="Digite o Email">
-                    <label for="senhaClienteCadastro" class="form-label">Senha:</label>
-                    <input type="text" name="senhaClienteCadastro"
-                           class="form-control mb-3" id="senhaClienteCadastro" placeholder="Digite uma Senha">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-success">Criar Usuário</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 <!-- Modal Cadastro Genero -->
 <div class="modal fade" id="modalcadastroGenero" tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header ">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Gênero</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -193,33 +60,30 @@ include_once('./navbar/navAdm.php');
                             acima.
                         </div>
                     </div>
-                    <div class="alert alert-danger alert-dismissible fade show " role="alert" id="AlertaCadastro"
-                         style="display:none">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="submit" id="btnAddGenero" class="btn btn-success">Criar Gênero</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" id="btnAddGenero" class="btn btn-success">Criar Gênero</button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<!-- Modal Cadastro Genero -->
+
+<!-- Modal Editar Genero -->
 <div class="modal fade" id="modalEditGenero" tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Gênero</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header bg-primary text-white text-center">
+                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Editar Gênero</h1>
+                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="#" method="post" name="frmEditGenero" id="frmEditGenero">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <input type="text" id="idGeneroEdit" hidden="hidden">
+                        <label for="idGeneroEdit"></label><input type="text" id="idGeneroEdit" hidden="hidden">
                         <label for="nomeGeneroEdit" class="form-label">Novo Gênero</label>
                         <input type="text" name="nomeGeneroEdit"
                                class="form-control" id="nomeGeneroEdit" placeholder="Digite o novo Genero">
@@ -230,68 +94,44 @@ include_once('./navbar/navAdm.php');
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                        <button type="submit" id="btnEditGenero" class="btn btn-success">Salvar Alteração</button>
+                        <button type="submit" id="btnEditGenero" class="btn btn-primary">Salvar Alteração</button>
                     </div>
             </form>
         </div>
     </div>
 </div>
 
-<!-- Modal Cadastro Filme -->
-<div class="modal fade" id="modalcadastroFilme" tabindex="-1"
+
+<!-- Modal deletar Genero -->
+<div class="modal fade" id="modalDeleteGenero" tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Filme</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-header bg-danger text-white text-center">
+                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Deletar Gênero</h1>
+                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="#" method="post">
+            <form action="#" method="post" name="frmDeleteGenero" id="frmDeleteGenero">
                 <div class="modal-body">
-
                     <div class="mb-3">
-                        <label for="nomeFilmeCadastro" class="form-label">Nome:</label>
-                        <input type="text" name="nomeFilmeCadastro"
-                               class="form-control" id="nomeFilmeCadastro" placeholder="Digite seu Nome">
-                    </div>
-                    <label for="generoFilmeCadastro" class="form-label">Gênero:</label>
-                    <select class="form-select" aria-label="Default select example" name="generoFilmeCadastro"
-                            id="generoFilmeCadastro">
-                        <?php
+                        <label for="idGeneroDelete"></label>
+                        <input type="text" id="idGeneroDelete" >
 
-                        $ids = listarTabelaOrdenada("*", 'genero', 'genero', 'ASC');
-                        foreach ($ids as $id) {
-
-                            $idgeneross = $id->genero;
-                            $idgeneroNumero = $id->idgenero;
-                            ?>
-                            <option value="<?php echo $idgeneroNumero ?>"><?php echo $idgeneross ?></option>
-                            <?php
-                        }
-                        ?>
-
-                    </select>
-                    <div class="mb-3">
-                        <label for="anoFilmeCadastro" class="form-label">Data de Lançamento:</label>
-                        <input type="text" minlength="4" maxlength="4"
-                               name="anoFilmeCadastro"
-                               class="form-control" id="anoFilmeCadastro" placeholder="Digite a Data de Lançamento"
-                    </div>
-                    <div class="mb-3">
-                        <label for="valorFilmeCadastro" class="form-label">Valor:</label>
-                        <input type="number" step="0.010" name="valorFilmeCadastro"
-                               class="form-control" id="valorFilmeCadastro" placeholder="Digite o Valor">
+                        <div id="GeneroHelp" class="alert alert-danger text-center">Esta ação <b>não</b> pode ser
+                            desfeita!
+                        </div>
                     </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-success">Cadastrar Filme</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" id="btnDeleteGenero" class="btn btn-outline-danger">Deletar</button>
+                    </div>
             </form>
         </div>
     </div>
 </div>
+
+
 <script
         src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
