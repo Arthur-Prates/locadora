@@ -146,12 +146,12 @@ function alterarGlobal($tabela, $campo, $valor, $identificar, $id)
 }
 
 
-function deletecadastro($tabela, $donoid, $id)
+function deletecadastro($tabela, $NomeDoCampoId, $id)
 {
     $conn = conectar();
     try {
         $conn->beginTransaction();
-        $sqlLista = $conn->prepare("DELETE FROM $tabela WHERE $donoid='$id' ");
+        $sqlLista = $conn->prepare("DELETE FROM $tabela WHERE $NomeDoCampoId = '$id' ");
         //        $sqlLista->bindValue(1, $campoParametro, PDO::PARAM_INT);
         $sqlLista->execute();
         $conn->commit();
@@ -170,24 +170,24 @@ function deletecadastro($tabela, $donoid, $id)
 
 ;
 
-function insertGlobal($tabela, $dados, $novosDados)
+function insertGlobal($tabela, $dados, $novosDados1,$novosDados2)
 {
     $conn = conectar();
     try {
         $conn->beginTransaction();
-        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES ('$novosDados')");
+        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES ('$novosDados1','$novosDados2')");
         $sqlLista->execute();
         $conn->commit();
         if ($sqlLista->rowCount() > 0) {
             return $sqlLista->fetchAll(PDO::FETCH_OBJ);
         } else {
             return 'Vazio';
-        };
+        }
     } catch (PDOExecption $e) {
         echo 'Exception -> ';
-        return ($e->getMessage());
         $conn->rollback();
-    };
+        return ($e->getMessage());
+    }
     $conn = null;
 }
 

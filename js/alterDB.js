@@ -1,10 +1,10 @@
-function addcomSucesso() {
+function addOuEditSucesso(UserAlter, icon, addOuEditOuDelete) {
     let timerInterval;
     Swal.fire({
-        title: "Adicionado com sucesso! <br> Atualizando Dados.",
+        title: `${UserAlter}, você ${addOuEditOuDelete} com sucesso! <br> Atualizando Dados.`,
         html: "Fechando em <b></b> ms.",
         timer: 3000,
-        icon: "success",
+        icon: `${icon}`,
         timerProgressBar: true,
         didOpen: () => {
             Swal.showLoading();
@@ -24,6 +24,7 @@ function addcomSucesso() {
         }
     });
 }
+
 
 function addErro() {
     let timerInterval;
@@ -74,30 +75,50 @@ function abrirModalEdicao(genero, idgenero) {
 }
 
 
-function abrirModalJs(id, inID, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, formulario) {
+function abrirModalJs(UserAlter, id, inID, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
     const formDados = document.getElementById(`${formulario}`)
-    const inputFocar = document.getElementById(`${inFocus}`);
+
+    var botoes = document.getElementById(`${botao}`);
     const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
     if (abrirModal === 'A') {
         ModalInstacia.show();
-        inputFocar.focus();
 
-        if (inID !== false) {
-            const inputid = document.getElementById(`${inID}`);
-            inputid.value = id;
+        const inputFocar = document.getElementById(`${inFocus}`);
+        if (inFocusValue !== false) {
+            inputFocar.value = inFocusValue;
+            setTimeout(function () {
+                inputFocar.focus();
 
+            }, 500);
+
+        } else {
+            setTimeout(function () {
+                inputFocar.focus();
+
+            }, 500);
+
+            inputFocar.value = '';
         }
+        const inputid = document.getElementById(`${inID}`);
+        if (inID !== false) {
+            inputid.value = id;
+        }else{
+            inputid.value = '3552355';
+        }
+
 
         const submitHandler = function (event) {
             event.preventDefault();
 
-            botao.disabled = true;
-
+            botoes.disabled = true;
             mostrarProcessando()
             const form = event.target;
             const formData = new FormData(form);
             if (inID !== false) {
                 formData.append('id', `${id}`)
+            }
+            if (UserAlter !== false) {
+                formData.append('UserLast', `${UserAlter}`)
             }
             formData.append('controle', `${addEditDel}`)
 
@@ -106,38 +127,49 @@ function abrirModalJs(id, inID, nomeModal, abrirModal = 'A', botao, addEditDel, 
             })
                 .then(response => response.json())
                 .then(data => {
-
                     if (data.success) {
-                        addcomSucesso();
+                        switch (addEditDel) {
+                            case 'generoAdd':
+                                addOuEditSucesso(UserAlter, 'success', 'adicionou')
+                                break;
+                            case 'generoEdit':
+                                addOuEditSucesso(UserAlter, 'info', 'editou')
+                                break;
+                            case 'generoDelete':
+                                addOuEditSucesso(UserAlter, 'success', 'deletou')
+                                break;
+                        }
+
                         // AlertaCadastro.classList.remove('alert-danger');
                         // AlertaCadastro.classList.add('alert-success');
                         // AlertaCadastro.style.display = 'block';
                         // AlertaCadastro.innerHTML = data.message;
-                        setTimeout(function () {
-                            esconderProcessando();
-                            window.location.reload(true);
-                        }, 3000);
+                        // setTimeout(function () {
+                        //     esconderProcessando();
+                        //     window.location.reload(true);
+                        //
+                        // }, 3000);
                     } else {
                         addErro()
-                        console.log(data)
-                        console.log(data.message)
                         // AlertaCadastro.classList.remove('alert-success');
                         // AlertaCadastro.classList.add('alert-danger');
                         // AlertaCadastro.style.display = 'block';
                         // AlertaCadastro.innerHTML = data.message;
-                        setTimeout(function () {
-                            esconderProcessando();
-                            window.location.reload(true);
-                        }, 3000);
+                        // setTimeout(function () {
+                        //     esconderProcessando();
+                        //     window.location.reload(true);
+                        // }, 3000);
+                        console.log('Tono ELSE')
                     }
+                    console.log(data)
                 })
                 .catch(error => {
-
+                    console.log('Tono ERORR')
                     addErro()
-                    setTimeout(function () {
-                        esconderProcessando();
-                        window.location.reload(true);
-                    }, 3000);
+                    // setTimeout(function () {
+                    //     esconderProcessando();
+                    //     window.location.reload(true);
+                    // }, 3000);
                     console.error('Erro na requisição:', error);
                 });
 
@@ -148,9 +180,10 @@ function abrirModalJs(id, inID, nomeModal, abrirModal = 'A', botao, addEditDel, 
 
     } else {
         alert('nem abre')
+        esconderProcessando()
         ModalInstacia.hide();
     }
-    ;
+
 }
 
 function mostrarProcessando() {

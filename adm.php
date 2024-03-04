@@ -15,15 +15,13 @@ include_once("func/funcoes.php");
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css">
+
 </head>
 
 <body>
 <?php
 include_once('./navbar/navAdm.php');
 ?>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDeleteGenero">
-    Launch demo modal
-</button>
 
 <div class="row d-flex">
     <div class="col-0 col-lg-2 bg-black text-center text-white" id='navLateral'>
@@ -45,7 +43,7 @@ include_once('./navbar/navAdm.php');
      aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header ">
+            <div class="modal-header  bg-success text-white text-center">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Gênero</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -64,6 +62,37 @@ include_once('./navbar/navAdm.php');
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
                         <button type="submit" id="btnAddGenero" class="btn btn-success">Criar Gênero</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal deletar Genero -->
+<div class="modal fade" id="modalDeleteGenero" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white text-center">
+                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Deletar Gênero</h1>
+                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" method="post" name="frmDeleteGenero" id="frmDeleteGenero">
+                <div class="modal-body">
+                    <div class="mb-3 text-center">
+                        <label for="idGeneroDelete"></label>
+
+                        <input type="text" id="idGeneroDelete" name="idGeneroDelete" >
+
+                        <div id="GeneroHelp" class="alert alert-danger text-center">Esta ação <b>não</b> pode ser
+                            desfeita!
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" id="btnDeleteGenero" class="btn btn-outline-danger">Deletar</button>
                     </div>
                 </div>
             </form>
@@ -96,41 +125,14 @@ include_once('./navbar/navAdm.php');
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
                         <button type="submit" id="btnEditGenero" class="btn btn-primary">Salvar Alteração</button>
                     </div>
+                </div>
             </form>
         </div>
     </div>
 </div>
 
 
-<!-- Modal deletar Genero -->
-<div class="modal fade" id="modalDeleteGenero" tabindex="-1"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-danger text-white text-center">
-                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Deletar Gênero</h1>
-                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="#" method="post" name="frmDeleteGenero" id="frmDeleteGenero">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="idGeneroDelete"></label>
-                        <input type="text" id="idGeneroDelete" >
-
-                        <div id="GeneroHelp" class="alert alert-danger text-center">Esta ação <b>não</b> pode ser
-                            desfeita!
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" id="btnDeleteGenero" class="btn btn-outline-danger">Deletar</button>
-                    </div>
-            </form>
-        </div>
-    </div>
-</div>
-
+</body>
 
 <script
         src="https://code.jquery.com/jquery-3.7.1.js"
@@ -145,13 +147,10 @@ include_once('./navbar/navAdm.php');
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
 <script src="./js/script.js"></script>
 <script src="./js/alterDB.js"></script>
 <script src="./js/controle.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
-<script>
 
-</script>
-</body>
 
 </html>

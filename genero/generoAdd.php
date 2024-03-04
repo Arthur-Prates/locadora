@@ -3,10 +3,15 @@ include_once("config/constantes.php");
 include_once("config/conexao.php");
 include_once("func/funcoes.php");
 $Dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-//echo json_encode([$Dados]);
+
+//    echo json_encode([$Dados]);
+
+
 if (isset($Dados) && !empty($Dados)) {
     $genero = isset($Dados['nomeGeneroCadastro']) ? addslashes(mb_strtoupper($Dados['nomeGeneroCadastro'], 'UTF-8')) : '';
-    $retornoInsert = insertGlobal('genero', 'genero', $genero);
+    $userLast = isset($Dados['UserLast']) ? addslashes(mb_strtoupper($Dados['UserLast'], 'UTF-8')) : '';
+
+    $retornoInsert = insertGlobal('genero', 'genero,userAlter', "$genero","$userLast");
 
 
     if ($retornoInsert > 0) {

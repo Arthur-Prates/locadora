@@ -1,3 +1,6 @@
+<?php $USERLOGADO = $_SESSION['nome'];
+
+?>
 <div class="container">
     <table class="table mt-5">
         <thead>
@@ -7,7 +10,7 @@
             </div>
             <div class="col-6 d-flex justify-content-end mt-5">
                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
-                        onclick="abrirModalJs(false,false,'modalcadastroGenero','A','btnAddGenero','generoAdd','nomeGeneroCadastro','frmAddGenero')">
+                        onclick="abrirModalJs('<?php echo $USERLOGADO; ?>',false,false,'modalcadastroGenero','A','btnAddGenero','generoAdd','nomeGeneroCadastro',false,'frmAddGenero')">
                     Cadastrar
                 </button>
             </div>
@@ -15,6 +18,7 @@
         <tr class="text-center">
             <th scope="col">#</th>
             <th scope="col">Gêneros</th>
+            <th scope="col">Ultima Alteração</th>
             <th scope="col">Ação</th>
         </tr>
         </thead>
@@ -26,24 +30,27 @@
         $contarItensLista = 1;
         foreach ($generos as $genero) {
             $nomeGenero = $genero->genero;
-            $idGenero = $genero->idgenero;
             $nomeGenero = ucfirst_tr($nomeGenero);
+            $idGenero = $genero->idgenero;
+            $LastUser = $genero->userAlter;
+            $LastUser = ucfirst_tr($LastUser);
 
             ?>
             <tr class="text-center">
                 <th scope="row"><?php echo $contarItensLista ?></th>
                 <td><?php echo $nomeGenero ?></td>
+                <td><?php echo $LastUser ?></td>
                 <td>
                     <form action="#" method="post">
 
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    onclick="abrirModalJs('<?php echo $idGenero; ?>','idGeneroEdit','modalEditGenero','A','btnEditGenero','generoEdit','nomeGeneroEdit','frmEditGenero')">
+                                    onclick="abrirModalJs('<?php echo $USERLOGADO; ?>','<?php echo $idGenero; ?>','idGeneroEdit','modalEditGenero','A','btnEditGenero','generoEdit','nomeGeneroEdit','<?php echo $nomeGenero ?>','frmEditGenero')">
                                 Alterar
                             </button>
-
+                            <?php echo $idGenero; ?>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    onclick="abrirModalJs('<?php echo $idGenero; ?>','idGeneroDelete','modalDeleteGenero','A','btnDeleteGenero','generoDelete','nomeGeneroDelete','frmDeleteGenero')">
+                                    onclick="abrirModalJs('<?php echo $USERLOGADO; ?>','<?php echo $idGenero; ?>','idGeneroDelete','modalDeleteGenero','A','btnDeleteGenero','generoDelete',false,false,'frmDeleteGenero')">
                                 Deletar
                             </button>
                     </form>
