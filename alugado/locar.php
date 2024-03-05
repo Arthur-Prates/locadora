@@ -49,6 +49,7 @@
         foreach ($locars as $locar) {
             $idLocar = $locar->idlocar;
             $nomeclienteLocar = $locar->nome;
+            $nomeclienteLocar = ucfirst_tr($nomeclienteLocar);
             $nomefilmeLocar = $locar->nomeFilme;
             $dataaluguelLocar = $locar->dataAlugada;
             ?>

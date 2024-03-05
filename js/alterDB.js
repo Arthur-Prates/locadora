@@ -176,7 +176,7 @@ function abrirModalJs(UserAlter, id, inID, nomeModal, abrirModal = 'A', botao, a
 }
 
 
-function abrirModalJsCliente(UserAlter, id, inID, inName, inAniversario, inTelefone, inCpf, inEmail, inSenha, Name, aniversario, telefone, cpf, email, senha, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
+function abrirModalJsCliente(tem,UserAlter, id, inID, inName, inAniversario, inTelefone, inCpf, inEmail, inSenha, Name, aniversario, telefone, cpf, email, senha, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
     const formDados = document.getElementById(`${formulario}`)
 
     var botoes = document.getElementById(`${botao}`);
@@ -194,36 +194,39 @@ function abrirModalJsCliente(UserAlter, id, inID, inName, inAniversario, inTelef
 
 
         }
+        if (tem === 'SIM') {
 
-        if (inID !== 'false') {
+            const inputid = document.getElementById(`${inID}`);
+            inputid.value = id;
+
+            if (inName !== false) {
+                const inputName = document.getElementById(`${inName}`);
+                inputName.value = Name;
+            }
+            if (inAniversario !== false) {
+                const inputAniversario = document.getElementById(`${inAniversario}`);
+                inputAniversario.value = aniversario;
+            }
+            if (inTelefone !== false) {
+                const inputTelefone = document.getElementById(`${inTelefone}`);
+                inputTelefone.value = telefone;
+            }
+            if (inCpf !== false) {
+                const inputCpf = document.getElementById(`${inCpf}`);
+                inputCpf.value = cpf;
+            }
+
+            if (inEmail !== false) {
+                const inputEmail = document.getElementById(`${inEmail}`);
+                inputEmail.value = email;
+            }
+
+        }
+        if (tem === 'del') {
             const inputid = document.getElementById(`${inID}`);
             inputid.value = id;
         }
-        if (inName !== 'false') {
-            const inputName = document.getElementById(`${inName}`);
-            inputName.value = Name;
-        }
-        if (inAniversario !== 'false') {
-            const inputAniversario = document.getElementById(`${inAniversario}`);
-            inputAniversario.value = aniversario;
-        }
-        if (inTelefone !== 'false') {
-            const inputTelefone = document.getElementById(`${inTelefone}`);
-            inputTelefone.value = telefone;
-        }
-        if (inCpf !== 'false') {
-            const inputCpf = document.getElementById(`${inCpf}`);
-            inputCpf.value = cpf;
-        }
-
-        if (inEmail !== 'false') {
-            const inputEmail = document.getElementById(`${inEmail}`);
-            inputEmail.value = email;
-        }
-
-
         const submitHandler = function (event) {
-
             event.preventDefault();
 
             botoes.disabled = true;
@@ -297,6 +300,7 @@ function abrirModalJsCliente(UserAlter, id, inID, inName, inAniversario, inTelef
 
 
     } else {
+    
         esconderProcessando()
         ModalInstacia.hide();
     }

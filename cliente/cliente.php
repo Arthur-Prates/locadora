@@ -46,7 +46,7 @@ $USERLOGADO = $_SESSION['nome']
             </div>
             <div class="col-6 d-flex justify-content-end mt-5">
                 <button type="button" class="btn btn-outline-success"
-                        onclick="abrirModalJsCliente('<?php echo $USERLOGADO; ?>',false,false,'nomeClienteCadastro','nascimentoClienteCadastro','telefoneClienteCadastro','cpfClienteCadastro','emailClienteCadastro','senhaClienteCadastro','','','','','','','modalCadastroCliente','A','btnAddCliente','clienteAdd','nomeClienteCadastro','','frmAddCliente')">
+                        onclick="abrirModalJsCliente('Nao','<?php echo $USERLOGADO; ?>','','','nomeClienteCadastro','nascimentoClienteCadastro','telefoneClienteCadastro','cpfClienteCadastro','emailClienteCadastro','senhaClienteCadastro','','','','','','','modalCadastroCliente','A','btnAddCliente','clienteAdd','nomeClienteCadastro','','frmAddCliente')">
                     Cadastrar
                 </button>
             </div>
@@ -92,13 +92,13 @@ $USERLOGADO = $_SESSION['nome']
                                 data-bs-target="#modalvermais<?php echo $contarItensLista ?>">Ver Mais
                         </button>
                         <button type="button" class="btn btn-primary"
-                                onclick="abrirModalJsCliente('<?php echo $USERLOGADO; ?>','<?php echo $idCliente; ?>','idClienteEdit','nomeClienteEdit','nascimentoClienteEdit','telefoneClienteEdit','cpfClienteEdit','emailClienteEdit','senhaClienteEdit','<?php echo $nomeCliente ?>','<?php echo $nascimentoCliente ?>','<?php echo $telefoneCliente ?>','<?php echo $cpfCliente ?>','<?php echo $emailCliente ?>','<?php echo $senhaCliente ?>','modalEditCliente','A','btnEditCliente','clienteEdit','nomeClienteEdit','','frmEditCliente')">
+                                onclick="abrirModalJsCliente('SIM','<?php echo $USERLOGADO; ?>','<?php echo $idCliente; ?>','idClienteEdit','nomeClienteEdit','nascimentoClienteEdit','telefoneClienteEdit','cpfClienteEdit','emailClienteEdit','senhaClienteEdit','<?php echo $nomeCliente ?>','<?php echo $nascimentoCliente ?>','<?php echo $telefoneCliente ?>','<?php echo $cpfCliente ?>','<?php echo $emailCliente ?>','<?php echo $senhaCliente ?>','modalEditCliente','A','btnEditCliente','clienteEdit','nomeClienteEdit','','frmEditCliente')">
                             Alterar
                         </button>
                         <input type="text" value="<?php echo $idCliente ?>" hidden="hidden" name="idCliente">
 
                         <button type="button" class="btn btn-danger"
-                                onclick="abrirModalJsCliente('<?php echo $USERLOGADO; ?>','<?php echo $idCliente; ?>','idClienteDelete','false','false','false','false','false','false','false','false','false','false','false','false','modalDeleteCliente','A','btnDeleteCliente','clienteDelete','false','false','frmDeleteCliente')">
+                                onclick="abrirModalJsCliente('del','<?php echo $USERLOGADO; ?>','<?php echo $idCliente; ?>','idClienteDelete','false','false','false','false','false','false','false','false','false','false','false','false','modalDeleteCliente','A','btnDeleteCliente','clienteDelete','false','false','frmDeleteCliente')">
                             Deletar
                         </button>
                 </form>
