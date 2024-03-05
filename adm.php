@@ -83,7 +83,7 @@ include_once('./navbar/navAdm.php');
                     <div class="mb-3 text-center">
                         <label for="idGeneroDelete"></label>
 
-                        <input type="text" id="idGeneroDelete" name="idGeneroDelete" >
+                        <input type="text" id="idGeneroDelete" name="idGeneroDelete" hidden="hidden">
 
                         <div id="GeneroHelp" class="alert alert-danger text-center">Esta ação <b>não</b> pode ser
                             desfeita!

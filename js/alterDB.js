@@ -91,19 +91,10 @@ function abrirModalJs(UserAlter, id, inID, nomeModal, abrirModal = 'A', botao, a
 
             }, 500);
 
-        } else {
-            setTimeout(function () {
-                inputFocar.focus();
-
-            }, 500);
-
-            inputFocar.value = '';
         }
         const inputid = document.getElementById(`${inID}`);
         if (inID !== false) {
             inputid.value = id;
-        }else{
-            inputid.value = '3552355';
         }
 
 
@@ -144,32 +135,31 @@ function abrirModalJs(UserAlter, id, inID, nomeModal, abrirModal = 'A', botao, a
                         // AlertaCadastro.classList.add('alert-success');
                         // AlertaCadastro.style.display = 'block';
                         // AlertaCadastro.innerHTML = data.message;
-                        // setTimeout(function () {
-                        //     esconderProcessando();
-                        //     window.location.reload(true);
-                        //
-                        // }, 3000);
+                        setTimeout(function () {
+                            esconderProcessando();
+                            window.location.reload(true);
+
+                        }, 3000);
                     } else {
                         addErro()
                         // AlertaCadastro.classList.remove('alert-success');
                         // AlertaCadastro.classList.add('alert-danger');
                         // AlertaCadastro.style.display = 'block';
-                        // AlertaCadastro.innerHTML = data.message;
-                        // setTimeout(function () {
-                        //     esconderProcessando();
-                        //     window.location.reload(true);
-                        // }, 3000);
-                        console.log('Tono ELSE')
+                        AlertaCadastro.innerHTML = data.message;
+                        setTimeout(function () {
+                            esconderProcessando();
+                            window.location.reload(true);
+                        }, 3000);
                     }
                     console.log(data)
                 })
                 .catch(error => {
-                    console.log('Tono ERORR')
+
                     addErro()
-                    // setTimeout(function () {
-                    //     esconderProcessando();
-                    //     window.location.reload(true);
-                    // }, 3000);
+                    setTimeout(function () {
+                        esconderProcessando();
+                        window.location.reload(true);
+                    }, 3000);
                     console.error('Erro na requisição:', error);
                 });
 
@@ -179,7 +169,6 @@ function abrirModalJs(UserAlter, id, inID, nomeModal, abrirModal = 'A', botao, a
 
 
     } else {
-        alert('nem abre')
         esconderProcessando()
         ModalInstacia.hide();
     }

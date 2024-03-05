@@ -48,7 +48,7 @@
                                     onclick="abrirModalJs('<?php echo $USERLOGADO; ?>','<?php echo $idGenero; ?>','idGeneroEdit','modalEditGenero','A','btnEditGenero','generoEdit','nomeGeneroEdit','<?php echo $nomeGenero ?>','frmEditGenero')">
                                 Alterar
                             </button>
-                            <?php echo $idGenero; ?>
+                           
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     onclick="abrirModalJs('<?php echo $USERLOGADO; ?>','<?php echo $idGenero; ?>','idGeneroDelete','modalDeleteGenero','A','btnDeleteGenero','generoDelete',false,false,'frmDeleteGenero')">
                                 Deletar
