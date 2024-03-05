@@ -190,6 +190,26 @@ function insertGlobal($tabela, $dados, $novosDados1,$novosDados2)
     }
     $conn = null;
 }
+function insertCliente($tabela, $dados, $nome, $nascimento, $telefone, $email, $senha, $cpf, $userAlter)
+{
+    $conn = conectar();
+    try {
+        $conn->beginTransaction();
+        $sqlLista = $conn->prepare("INSERT INTO $tabela($dados) VALUES ('$nome', '$nascimento', '$telefone', '$email', '$senha', '$cpf', '$userAlter')");
+        $sqlLista->execute();
+        $conn->commit();
+        if ($sqlLista->rowCount() > 0) {
+            return $sqlLista->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return 'Vazio';
+        }
+    } catch (PDOExecption $e) {
+        echo 'Exception -> ';
+        $conn->rollback();
+        return ($e->getMessage());
+    }
+    $conn = null;
+}
 
 ;
 

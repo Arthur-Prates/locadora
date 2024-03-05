@@ -33,6 +33,10 @@
 //    insertGlobal('cliente', 'nome, nascimento, telefone, email, senha, cpf', "$nomeClienteCadastro','$nascimentoClienteCadastro','$telefoneClienteCadastro','$emailClienteCadastro','$senhaClienteCadastro','$cpfClienteCadastro'");
 //}
 //?>
+
+<?php
+$USERLOGADO = $_SESSION['nome']
+?>
 <div class="container">
     <table class="table mt-5 fixed">
         <thead>
@@ -41,8 +45,9 @@
                 <h3>Tabela Usuários</h3>
             </div>
             <div class="col-6 d-flex justify-content-end mt-5">
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
-                        data-bs-target="#modalcadastroCliente">Cadastrar
+                <button type="button" class="btn btn-outline-success"
+                        onclick="abrirModalJsCliente('<?php echo $USERLOGADO; ?>',false,false,'nomeClienteCadastro','nascimentoClienteCadastro','telefoneClienteCadastro','cpfClienteCadastro','emailClienteCadastro','senhaClienteCadastro','','','','','','','modalCadastroCliente','A','btnAddCliente','clienteAdd','nomeClienteCadastro','','frmAddCliente')">
+                    Cadastrar
                 </button>
             </div>
         </div>
@@ -64,12 +69,15 @@
 
         as $cliente){
         $idCliente = $cliente->idcliente;
+        $LastUser = $cliente->userAlter;
         $nomeCliente = $cliente->nome;
         $nascimentoCliente = $cliente->nascimento;
         $telefoneCliente = $cliente->telefone;
         $emailCliente = $cliente->email;
         $senhaCliente = $cliente->senha;
         $cpfCliente = $cliente->cpf;
+        $LastUser = ucfirst_tr($LastUser);
+        $nomeCliente = ucfirst_tr($nomeCliente);
         ?>
         <tr class="text-center">
             <th scope="row"><?php echo $contarItensLista ?></th>
@@ -77,16 +85,22 @@
             <td><?php echo $nascimentoCliente ?></td>
             <td><?php echo $telefoneCliente ?></td>
             <td>
+
                 <form action="#" method="post">
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                         <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                 data-bs-target="#modalvermais<?php echo $contarItensLista ?>">Ver Mais
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#modalupdate<?php echo $contarItensLista ?>">Alterar
+                        <button type="button" class="btn btn-primary"
+                                onclick="abrirModalJsCliente('<?php echo $USERLOGADO; ?>','<?php echo $idCliente; ?>','idClienteEdit','nomeClienteEdit','nascimentoClienteEdit','telefoneClienteEdit','cpfClienteEdit','emailClienteEdit','senhaClienteEdit','<?php echo $nomeCliente ?>','<?php echo $nascimentoCliente ?>','<?php echo $telefoneCliente ?>','<?php echo $cpfCliente ?>','<?php echo $emailCliente ?>','<?php echo $senhaCliente ?>','modalEditCliente','A','btnEditCliente','clienteEdit','nomeClienteEdit','','frmEditCliente')">
+                            Alterar
                         </button>
                         <input type="text" value="<?php echo $idCliente ?>" hidden="hidden" name="idCliente">
-                        <button type="submit" class="btn btn-danger">Deletar</button>
+
+                        <button type="button" class="btn btn-danger"
+                                onclick="abrirModalJsCliente('<?php echo $USERLOGADO; ?>','<?php echo $idCliente; ?>','idClienteDelete','false','false','false','false','false','false','false','false','false','false','false','false','modalDeleteCliente','A','btnDeleteCliente','clienteDelete','false','false','frmDeleteCliente')">
+                            Deletar
+                        </button>
                 </form>
             </td>
 
@@ -128,8 +142,8 @@
                                         </div>
 
                                         <div class="col-12">
-                                            <h4 class="text-center">Senha</h4>
-                                            <?php echo "<p class='text-center'>$senhaCliente</p>" ?>
+                                            <h4 class="text-center">Ultima Alteração</h4>
+                                            <?php echo "<p class='text-center'>$LastUser</p>" ?>
                                         </div>
 
                                     </div>
@@ -143,54 +157,6 @@
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar
                             </button>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Modal Update -->
-            <div class="modal fade" id="modalupdate<?php echo $contarItensLista ?>" tabindex="-1"
-                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Alterar Usuário</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form action="#" method="post">
-                            <div class="modal-body">
-
-                                <div class="mb-3">
-
-
-                                    <label for="nomeClienteUpdate" class="form-label">Nome:</label>
-                                    <input type="text" value="<?php echo $nomeCliente ?>" name="nomeClienteUpdate"
-                                           class="form-control mb-3" id="nomeClienteUpdate">
-                                    <label for="nascimentoClienteUpdate" class="form-label">Data de Nascimento:</label>
-                                    <input type="date" value="<?php echo $nascimentoCliente ?>"
-                                           name="nascimentoClienteUpdate"
-                                           class="form-control mb-3" id="nascimentoClienteUpdate">
-                                    <label for="telefoneClienteUpdate" class="form-label">Telefone:</label>
-                                    <input type="text" maxlength="13" value="<?php echo $telefoneCliente ?>"
-                                           name="telefoneClienteUpdate"
-                                           class="form-control mb-3" id="telefoneClienteUpdate">
-                                    <label for="cpfClienteUpdate" class="form-label">CPF:</label>
-                                    <input type="text" maxlength="14" value="<?php echo $cpfCliente ?>"
-                                           name="cpfClienteUpdate"
-                                           class="form-control mb-3 cpfClienteCadastro" id="cpfClienteUpdate">
-                                    <label for="emailClienteUpdate" class="form-label">Email:</label>
-                                    <input type="email" value="<?php echo $emailCliente ?>" name="emailClienteUpdate"
-                                           class="form-control mb-3" id="emailClienteUpdate">
-                                    <label for="senhaClienteUpdate" class="form-label">Senha:</label>
-                                    <input type="text" value="<?php echo $senhaCliente ?>" name="senhaClienteUpdate"
-                                           class="form-control mb-3" id="senhaClienteUpdate">
-                                </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar
-                                </button>
-                                <button type="submit" class="btn btn-primary">Salvar Modificações</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>

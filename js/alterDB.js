@@ -145,7 +145,7 @@ function abrirModalJs(UserAlter, id, inID, nomeModal, abrirModal = 'A', botao, a
                         // AlertaCadastro.classList.remove('alert-success');
                         // AlertaCadastro.classList.add('alert-danger');
                         // AlertaCadastro.style.display = 'block';
-                        AlertaCadastro.innerHTML = data.message;
+                        // AlertaCadastro.innerHTML = data.message;
                         setTimeout(function () {
                             esconderProcessando();
                             window.location.reload(true);
@@ -174,6 +174,135 @@ function abrirModalJs(UserAlter, id, inID, nomeModal, abrirModal = 'A', botao, a
     }
 
 }
+
+
+function abrirModalJsCliente(UserAlter, id, inID, inName, inAniversario, inTelefone, inCpf, inEmail, inSenha, Name, aniversario, telefone, cpf, email, senha, nomeModal, abrirModal = 'A', botao, addEditDel, inFocus, inFocusValue, formulario) {
+    const formDados = document.getElementById(`${formulario}`)
+
+    var botoes = document.getElementById(`${botao}`);
+    const ModalInstacia = new bootstrap.Modal(document.getElementById(`${nomeModal}`))
+    if (abrirModal === 'A') {
+        ModalInstacia.show();
+
+        const inputFocar = document.getElementById(`${inFocus}`);
+        if (inFocusValue !== 'false') {
+            inputFocar.value = inFocusValue;
+            setTimeout(function () {
+                inputFocar.focus();
+
+            }, 500);
+
+
+        }
+
+        if (inID !== 'false') {
+            const inputid = document.getElementById(`${inID}`);
+            inputid.value = id;
+        }
+        if (inName !== 'false') {
+            const inputName = document.getElementById(`${inName}`);
+            inputName.value = Name;
+        }
+        if (inAniversario !== 'false') {
+            const inputAniversario = document.getElementById(`${inAniversario}`);
+            inputAniversario.value = aniversario;
+        }
+        if (inTelefone !== 'false') {
+            const inputTelefone = document.getElementById(`${inTelefone}`);
+            inputTelefone.value = telefone;
+        }
+        if (inCpf !== 'false') {
+            const inputCpf = document.getElementById(`${inCpf}`);
+            inputCpf.value = cpf;
+        }
+
+        if (inEmail !== 'false') {
+            const inputEmail = document.getElementById(`${inEmail}`);
+            inputEmail.value = email;
+        }
+
+
+        const submitHandler = function (event) {
+
+            event.preventDefault();
+
+            botoes.disabled = true;
+            mostrarProcessando()
+            const form = event.target;
+            const formData = new FormData(form);
+            if (inID !== false) {
+                formData.append('id', `${id}`)
+            }
+            if (UserAlter !== false) {
+                formData.append('UserLast', `${UserAlter}`)
+            }
+
+            formData.append('controle', `${addEditDel}`)
+
+            fetch('controle.php', {
+                method: 'POST', body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.success) {
+
+                        switch (addEditDel) {
+                            case 'clienteAdd':
+                                addOuEditSucesso(UserAlter, 'success', 'adicionou')
+                                break;
+                            case 'clienteEdit':
+                                addOuEditSucesso(UserAlter, 'info', 'editou')
+                                break;
+                            case 'clienteDelete':
+                                addOuEditSucesso(UserAlter, 'success', 'deletou')
+                                break;
+                        }
+
+                        // AlertaCadastro.classList.remove('alert-danger');
+                        // AlertaCadastro.classList.add('alert-success');
+                        // AlertaCadastro.style.display = 'block';
+                        // AlertaCadastro.innerHTML = data.message;
+                        setTimeout(function () {
+                            esconderProcessando();
+                            window.location.reload(true);
+
+                        }, 3000);
+                    } else {
+                        addErro()
+                        // AlertaCadastro.classList.remove('alert-success');
+                        // AlertaCadastro.classList.add('alert-danger');
+                        // AlertaCadastro.style.display = 'block';
+                        // AlertaCadastro.innerHTML = data.message;
+                        setTimeout(function () {
+                            esconderProcessando();
+                            window.location.reload(true);
+                        }, 3000);
+                    }
+
+                })
+                .catch(error => {
+
+                    addErro()
+                    setTimeout(function () {
+                        esconderProcessando();
+                        window.location.reload(true);
+                    }, 3000);
+                    console.error('Erro na requisição:', error);
+                });
+
+
+        }
+        formDados.addEventListener('submit', submitHandler);
+
+
+    } else {
+        esconderProcessando()
+        ModalInstacia.hide();
+    }
+
+}
+
 
 function mostrarProcessando() {
     var divProcessando = document.createElement('div')

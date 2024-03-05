@@ -132,6 +132,135 @@ include_once('./navbar/navAdm.php');
 </div>
 
 
+<!-- Modal Cadastro Cliente -->
+<div class="modal fade" id="modalCadastroCliente" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white text-center">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Usuário</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" method="post" id="frmAddCliente" name="frmAddGenero">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="nomeClienteCadastro" class="form-label">Novo Nome:</label>
+                        <input type="text" name="nomeClienteCadastro"
+                               class="form-control mb-3" id="nomeClienteCadastro">
+                        <label for="nascimentoClienteCadastro" class="form-label">Data de Nascimento:</label>
+                        <input type="date"
+                               name="nascimentoClienteCadastro"
+                               class="form-control mb-3" id="nascimentoClienteCadastro">
+                        <label for="telefoneClienteCadastro" class="form-label">Telefone:</label>
+                        <input type="text" maxlength="13"
+                               name="telefoneClienteCadastro"
+                               class="form-control mb-3 telefoneBR" id="telefoneClienteCadastro">
+                        <label for="cpfClienteCadastro" class="form-label">CPF:</label>
+                        <input type="text" maxlength="14"
+                               name="cpfClienteCadastro"
+                               class="form-control mb-3 cpfClienteCadastro" id="cpfClienteCadastro">
+                        <label for="emailClienteCadastro" class="form-label">Email:</label>
+                        <input type="email" name="emailClienteCadastro"
+                               class="form-control mb-3" id="emailClienteCadastro">
+                        <label for="senhaClienteCadastro" class="form-label">Senha:</label>
+                        <input type="text" name="senhaClienteCadastro"
+                               class="form-control mb-3" id="senhaClienteCadastro">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar
+                    </button>
+                    <button type="submit" class="btn btn-success" id="btnAddCliente">Criar Usuário</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal deletar Cliente -->
+<div class="modal fade" id="modalDeleteCliente" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white text-center">
+                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Deletar Cliente</h1>
+                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" method="post" name="frmDeleteCliente" id="frmDeleteCliente">
+                <div class="modal-body">
+                    <div class="mb-3 text-center">
+                        <label for="idClienteDelete"></label>
+
+                        <input type="text" id="idClienteDelete" name="idClienteDelete" hidden="hidden">
+
+                        <div id="ClienteHelp" class="alert alert-danger text-center">Esta ação <b>não</b> pode ser
+                            desfeita!
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" id="btnDeleteCliente" class="btn btn-outline-danger">Deletar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Cliente -->
+<div class="modal fade" id="modalEditCliente" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Alterar Usuário</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" method="post" id="frmEditCliente" name="frmEditCliente">
+                <div class="modal-body">
+
+                    <div class="mb-3">
+
+                        <label for="idClienteEdit" class="form-label"></label>
+                        <input type="text" name="idClienteEdit"
+                               class="form-control mb-3" id="idClienteEdit" hidden="hidden">
+                        <label for="nomeClienteEdit" class="form-label">Nome:</label>
+                        <input type="text" name="nomeClienteEdit"
+                               class="form-control mb-3" id="nomeClienteEdit">
+                        <label for="nascimentoClienteEdit" class="form-label">Data de Nascimento:</label>
+                        <input type="date"
+                               name="nascimentoClienteEdit"
+                               class="form-control mb-3" id="nascimentoClienteEdit">
+                        <label for="telefoneClienteEdit" class="form-label">Telefone:</label>
+                        <input type="text" maxlength="13"
+                               name="telefoneClienteEdit"
+                               class="form-control mb-3 telefoneBR" id="telefoneClienteEdit">
+                        <label for="cpfClienteEdit" class="form-label">CPF:</label>
+                        <input type="text" maxlength="14"
+                               name="cpfClienteEdit"
+                               class="form-control mb-3 cpfClienteCadastro" id="cpfClienteEdit">
+                        <label for="emailClienteEdit" class="form-label">Email:</label>
+                        <input type="email" name="emailClienteEdit"
+                               class="form-control mb-3" id="emailClienteEdit">
+                        <label for="senhaClienteEdit" class="form-label">Senha:</label>
+                        <input type="text" name="senhaClienteEdit"
+                               class="form-control mb-3" id="senhaClienteEdit">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="btnEditCliente">Salvar Modificações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 </body>
 
 <script

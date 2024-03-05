@@ -27,6 +27,15 @@ if (!empty($controle) && isset($controle)) {
         case 'generoDelete':
             include_once('genero/generoDelete.php');
             break;
+        case 'clienteAdd':
+            include_once('cliente/clienteAdd.php');
+            break;
+        case 'clienteEdit':
+            include_once('cliente/clienteEdit.php');
+            break;
+        case 'clienteDelete':
+            include_once('cliente/clienteDelete.php');
+            break;
     }
 
 } else {
